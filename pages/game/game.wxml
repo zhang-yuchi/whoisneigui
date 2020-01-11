@@ -1,0 +1,10 @@
+<!--pages/game/game.wxml-->
+<image src="../../image/log.png" class="background"></image>
+<view class="user-list">
+  <text>左</text>
+  <text><image src=""></image></text>
+</view>
+<scroll-view>
+  <view class="word">二叉树</view>
+
+</scroll-view>

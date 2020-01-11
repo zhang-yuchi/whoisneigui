@@ -4,23 +4,30 @@
   <image class="leave" src="../../image/left.png"></image>
   <view class="users">
 
-  <view class="userinfo"><image src="../../image/log.png"></image> <text>ved</text></view>
-  <view class="userinfo"><image src="../../image/log.png"></image> <text>ved</text></view>
-  <view class="userinfo"><image src="../../image/log.png"></image> <text>ved</text></view>
-  <view class="userinfo"><image src="../../image/log.png"></image> <text>ved</text></view>
-  <view class="userinfo"><image src="../../image/log.png"></image> <text>ved</text></view>
-  <view class="userinfo"><image src="../../image/log.png"></image> <text>ved</text></view>
+  <view class="userinfo"><image src="../../image/log.png"></image> <text class="name">ved</text></view>
+  <view class="userinfo"><image src="../../image/log.png"></image> <text class="name">ved</text></view>
+  <view class="userinfo"><image src="../../image/log.png"></image> <text class="name">ved</text></view>
+  <view class="userinfo"><image src="../../image/log.png"></image> <text class="name">vedasdfasdf</text></view>
+  <view class="userinfo"><image src="../../image/log.png"></image> <text class="name">ved</text></view>
+  <view class="userinfo"><image src="../../image/log.png"></image> <text class="name">ved</text></view>
 
 
   </view>
   
 </view>
-<scroll-view scroll-y="true">
+<scroll-view class="talk-content" scroll-y="true">
   <view class="word">二叉树</view>
   <view class="others-talk">
-    
+
   </view>
   <view class="mine-talk">
 
   </view>
 </scroll-view>
+
+<view class="talk-control">
+  <input placeholder="请输入内容"></input>
+  <text class="send-btn">
+    发送
+  </text>
+</view>

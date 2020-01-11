@@ -1,10 +1,26 @@
 <!--pages/game/game.wxml-->
 <image src="../../image/log.png" class="background"></image>
 <view class="user-list">
-  <text>左</text>
-  <text><image src=""></image></text>
-</view>
-<scroll-view>
-  <view class="word">二叉树</view>
+  <image class="leave" src="../../image/left.png"></image>
+  <view class="users">
 
+  <view class="userinfo"><image src="../../image/log.png"></image> <text>ved</text></view>
+  <view class="userinfo"><image src="../../image/log.png"></image> <text>ved</text></view>
+  <view class="userinfo"><image src="../../image/log.png"></image> <text>ved</text></view>
+  <view class="userinfo"><image src="../../image/log.png"></image> <text>ved</text></view>
+  <view class="userinfo"><image src="../../image/log.png"></image> <text>ved</text></view>
+  <view class="userinfo"><image src="../../image/log.png"></image> <text>ved</text></view>
+
+
+  </view>
+  
+</view>
+<scroll-view scroll-y="true">
+  <view class="word">二叉树</view>
+  <view class="others-talk">
+    
+  </view>
+  <view class="mine-talk">
+
+  </view>
 </scroll-view>

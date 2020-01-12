@@ -15,19 +15,82 @@
   </view>
   
 </view>
-<scroll-view class="talk-content" scroll-y="true">
+<view class="talk-content">
   <view class="word">二叉树</view>
-  <view class="others-talk">
+  <scroll-view style="height:100%" scroll-y="true" scroll-into-view="last">
 
-  </view>
-  <view class="mine-talk">
+    <view class="tips">第一轮</view>
+    <view class="others-talk">
+      <!-- 头像相关信息 -->
+      <view class="other-photos">
+        <view class="photos"><image src="../../image/log.png"></image></view>
+        <view>1号</view>
+      </view>
+      <view class="other-talks">
+       离散数学
+      </view>
+    </view>
 
-  </view>
-</scroll-view>
+    <view class="mine-talk">
+      <!-- 头像相关信息 -->
+      <view class="mine-photos">
+        <view class="photos"><image src="../../image/log.png"></image></view>
+        <view>2号</view>
+      </view>
+      <view class="mine-talks">
+       离散数学
+      </view>
+    </view>
+
+    <view class="others-talk">
+      <!-- 头像相关信息 -->
+      <view class="other-photos">
+        <view class="photos"><image src="../../image/log.png"></image></view>
+        <view>3号</view>
+      </view>
+      <view class="other-talks">
+       离散数学
+      </view>
+    </view>
+
+    <view class="others-talk">
+      <!-- 头像相关信息 -->
+      <view class="other-photos">
+        <view class="photos"><image src="../../image/log.png"></image></view>
+        <view>4号</view>
+      </view>
+      <view class="other-talks">
+       离散数学
+      </view>
+    </view>
+
+    <view class="others-talk">
+      <!-- 头像相关信息 -->
+      <view class="other-photos">
+        <view class="photos"><image src="../../image/log.png"></image></view>
+        <view>5号</view>
+      </view>
+      <view class="other-talks">
+       离散数学
+      </view>
+    </view>
+
+    <view class="others-talk" id="last">
+      <!-- 头像相关信息 -->
+      <view class="other-photos">
+        <view class="photos"><image src="../../image/log.png"></image></view>
+        <view>6号</view>
+      </view>
+      <view class="other-talks">
+       离散数学
+      </view>
+    </view>
+
+  </scroll-view>
+</view>
+
 
 <view class="talk-control">
-  <input placeholder="请输入内容"></input>
-  <text class="send-btn">
-    发送
-  </text>
+  <input class="input" placeholder="请输入内容,20字以内"></input>
+  <text class="send-btn">发送</text>
 </view>

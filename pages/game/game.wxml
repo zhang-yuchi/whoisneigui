@@ -1,281 +1,395 @@
 <!--pages/game/game.wxml-->
 <!-- 准备 -->
 <view class="ready" wx:if="{{!isStart}}">
-  <view class="ready-nav"><image src="../../image/left.png"></image><text>ved的房间</text></view>
+  <view class="ready-nav">
+    <image src="../../image/left.png" bindtap="back"></image>
+    <text>ved的房间</text>
+  </view>
   <scroll-view class="ready-user-list" scroll-y="true">
 
     <view class="ready-user">
-      <view class="ready-photos"><image src="../../image/log.png"></image></view>
+      <view class="ready-photos">
+        <image src="../../image/log.png"></image>
+      </view>
       <view class="ready-info">
-        <view class="ready-user-name"><text>ved</text><image src="../../image/owner.png" class="owner"></image></view>
+        <view class="ready-user-name">
+          <text>ved</text>
+          <image src="../../image/owner.png" class="owner"></image>
+        </view>
         <view class="score">积分:100分</view>
       </view>
     </view>
-<view class="ready-user">
+    <view class="ready-user">
       <view class="ready-photos ready-person">
-      <image src="../../image/log.png"></image>
-      <image class="isready"  src="../../image/ready.png"></image>
+        <image src="../../image/log.png"></image>
+        <image class="isready" src="../../image/ready.png"></image>
       </view>
       <view class="ready-info">
         <view class="ready-user-name">ved</view>
         <view class="score">积分:100分</view>
       </view>
-      <view class="outman"><image src="../../image/tiren.png"></image></view>
+      <view class="outman">
+        <image src="../../image/tiren.png"></image>
+      </view>
     </view>
     <view class="ready-user">
-      <view class="ready-photos"><image src="../../image/log.png"></image></view>
+      <view class="ready-photos">
+        <image src="../../image/log.png"></image>
+      </view>
       <view class="ready-info">
         <view class="ready-user-name">ved</view>
         <view class="score">积分:100分</view>
       </view>
-      <view class="outman"><image src="../../image/tiren.png"></image></view>
+      <view class="outman">
+        <image src="../../image/tiren.png"></image>
+      </view>
     </view>
     <view class="ready-user">
-      <view class="ready-photos"><image src="../../image/log.png"></image></view>
+      <view class="ready-photos">
+        <image src="../../image/log.png"></image>
+      </view>
       <view class="ready-info">
         <view class="ready-user-name">ved</view>
         <view class="score">积分:100分</view>
       </view>
-      <view class="outman"><image src="../../image/tiren.png"></image></view>
+      <view class="outman">
+        <image src="../../image/tiren.png"></image>
+      </view>
     </view>
     <view class="ready-user">
-      <view class="ready-photos"><image src="../../image/log.png"></image></view>
+      <view class="ready-photos">
+        <image src="../../image/log.png"></image>
+      </view>
       <view class="ready-info">
         <view class="ready-user-name">ved</view>
         <view class="score">积分:100分</view>
       </view>
-      <view class="outman"><image src="../../image/tiren.png"></image></view>
+      <view class="outman">
+        <image src="../../image/tiren.png"></image>
+      </view>
     </view>
     <!-- 待邀请 -->
     <view class="ready-user">
-      <view class="ready-photos"><image src="../../image/invite.png"></image></view>
+      <view class="ready-photos">
+        <image src="../../image/invite.png"></image>
+      </view>
+      <view class="ready-info">
+        <view class="ready-user-name-invite">待邀请</view>
+      </view>
+    </view>
+    <!-- 待邀请 -->
+    <view class="ready-user">
+      <view class="ready-photos">
+        <image src="../../image/invite.png"></image>
+      </view>
+      <view class="ready-info">
+        <view class="ready-user-name-invite">待邀请</view>
+      </view>
+    </view>
+    <!-- 待邀请 -->
+    <view class="ready-user">
+      <view class="ready-photos">
+        <image src="../../image/invite.png"></image>
+      </view>
       <view class="ready-info">
         <view class="ready-user-name-invite">待邀请</view>
       </view>
     </view>
 
-    
+
   </scroll-view>
   <view class="ready-control">
     <view class="start-btn" bindtap="readytogame">开始游戏</view>
     <view class="invite">+ 邀请</view>
+  </view>
+
+<!-- 退出 -->
+  <view class="back" wx:if="{{back}}">
+    <view class="back-window">
+      <view class="back-body">
+        确定要退出吗
+      </view>
+      <view class="back-control">
+        <view class="cancel-btn" bindtap="backcancel">取消</view>
+        <view class="sure-btn" bindtap="backsure">确定</view>
+      </view>
+    </view>
   </view>
 </view>
 
 
 <!-- 游戏开始 -->
 <view class="start" wx:if="{{isStart}}">
-<image src="../../image/log.png" class="background"></image>
-<view class="user-list">
-  <image class="leave" src="../../image/left.png"></image>
-<scroll-view class="users" scroll-x="true">
-  <view class="userinfo"><view class="uphoto out"><image src="../../image/log.png"></image></view> <text class="name">ved</text></view>
-  <view class="userinfo"><view class="uphoto"><image src="../../image/log.png"></image></view> <text class="name">ved</text></view>
-  <view class="userinfo"><view class="uphoto"><image src="../../image/log.png"></image></view> <text class="name">ved</text></view>
-  <view class="userinfo"><view class="uphoto"><image src="../../image/log.png"></image></view> <text class="name">vedasdfasdf</text></view>
-  <view class="userinfo"><view class="uphoto"><image src="../../image/log.png"></image></view><text class="name">ved</text></view>
-  <view class="userinfo"><view class="uphoto"><image src="../../image/log.png"></image></view><text class="name">ved</text></view>
-  <view class="userinfo"><view class="uphoto"><image src="../../image/log.png"></image></view><text class="name">ved</text></view>
+  <image src="../../image/log.png" class="background"></image>
+  <view class="user-list">
+    <image class="leave" src="../../image/left.png"></image>
+    <scroll-view class="users" scroll-x="true">
+      <view class="userinfo">
+        <view class="uphoto out">
+          <image src="../../image/log.png"></image>
+        </view>
+        <text class="name">ved</text>
+      </view>
+      <view class="userinfo">
+        <view class="uphoto">
+          <image src="../../image/log.png"></image>
+        </view>
+        <text class="name">ved</text>
+      </view>
+      <view class="userinfo">
+        <view class="uphoto">
+          <image src="../../image/log.png"></image>
+        </view>
+        <text class="name">ved</text>
+      </view>
+      <view class="userinfo">
+        <view class="uphoto">
+          <image src="../../image/log.png"></image>
+        </view>
+        <text class="name">vedasdfasdf</text>
+      </view>
+      <view class="userinfo">
+        <view class="uphoto">
+          <image src="../../image/log.png"></image>
+        </view>
+        <text class="name">ved</text>
+      </view>
+      <view class="userinfo">
+        <view class="uphoto">
+          <image src="../../image/log.png"></image>
+        </view>
+        <text class="name">ved</text>
+      </view>
+      <view class="userinfo">
+        <view class="uphoto">
+          <image src="../../image/log.png"></image>
+        </view>
+        <text class="name">ved</text>
+      </view>
 
 
-  </scroll-view>
-  
-</view>
-<view class="talk-content">
-  <view class="word">二叉树</view>
-  <scroll-view style="height:100%" scroll-y="true" scroll-into-view="last">
+    </scroll-view>
 
-    <view class="tips">第一轮</view>
-    <view class="others-talk">
-      <!-- 头像相关信息 -->
-      <view class="other-photos">
-        <view class="photos"><image src="../../image/log.png"></image></view>
-        <view>1号</view>
-      </view>
-      <view class="other-talks">
-       离散数学
-      </view>
-    </view>
+  </view>
+  <view class="talk-content">
+    <view class="word">二叉树</view>
+    <scroll-view style="height:100%" scroll-y="true" scroll-into-view="last">
 
-    <view class="mine-talk">
-      <!-- 头像相关信息 -->
-      <view class="mine-photos">
-        <view class="photos"><image src="../../image/log.png"></image></view>
-        <view>2号</view>
+      <view class="tips">第一轮</view>
+      <view class="others-talk">
+        <!-- 头像相关信息 -->
+        <view class="other-photos">
+          <view class="photos">
+            <image src="../../image/log.png"></image>
+          </view>
+          <view>1号</view>
+        </view>
+        <view class="other-talks">
+          离散数学
+        </view>
       </view>
-      <view class="mine-talks">
-       离散数学
-      </view>
-    </view>
 
-    <view class="others-talk">
-      <!-- 头像相关信息 -->
-      <view class="other-photos">
-        <view class="photos"><image src="../../image/log.png"></image></view>
-        <view>3号</view>
+      <view class="mine-talk">
+        <!-- 头像相关信息 -->
+        <view class="mine-photos">
+          <view class="photos">
+            <image src="../../image/log.png"></image>
+          </view>
+          <view>2号</view>
+        </view>
+        <view class="mine-talks">
+          离散数学
+        </view>
       </view>
-      <view class="other-talks">
-       离散数学
-      </view>
-    </view>
 
-    <view class="others-talk">
-      <!-- 头像相关信息 -->
-      <view class="other-photos">
-        <view class="photos"><image src="../../image/log.png"></image></view>
-        <view>4号</view>
+      <view class="others-talk">
+        <!-- 头像相关信息 -->
+        <view class="other-photos">
+          <view class="photos">
+            <image src="../../image/log.png"></image>
+          </view>
+          <view>3号</view>
+        </view>
+        <view class="other-talks">
+          离散数学
+        </view>
       </view>
-      <view class="other-talks">
-       离散数学
-      </view>
-    </view>
 
-    <view class="others-talk">
-      <!-- 头像相关信息 -->
-      <view class="other-photos">
-        <view class="photos"><image src="../../image/log.png"></image></view>
-        <view>5号</view>
+      <view class="others-talk">
+        <!-- 头像相关信息 -->
+        <view class="other-photos">
+          <view class="photos">
+            <image src="../../image/log.png"></image>
+          </view>
+          <view>4号</view>
+        </view>
+        <view class="other-talks">
+          离散数学
+        </view>
       </view>
-      <view class="other-talks">
-       离散数学
-      </view>
-    </view>
 
-    <view class="others-talk" id="last">
-      <!-- 头像相关信息 -->
-      <view class="other-photos">
-        <view class="photos"><image src="../../image/log.png"></image></view>
-        <view>6号</view>
+      <view class="others-talk">
+        <!-- 头像相关信息 -->
+        <view class="other-photos">
+          <view class="photos">
+            <image src="../../image/log.png"></image>
+          </view>
+          <view>5号</view>
+        </view>
+        <view class="other-talks">
+          离散数学
+        </view>
       </view>
-      <view class="other-talks">
-       离散数学
-      </view>
-    </view>
-  </scroll-view>
-</view>
 
-<!-- 投票 -->
-<view class="vote" wx:if="{{isVote}}">
-  <view class="vote-window">
-    <view class="vote-tips">请选择你要投选的号码</view>
-    <view class="vote-list">
+      <view class="others-talk" id="last">
+        <!-- 头像相关信息 -->
+        <view class="other-photos">
+          <view class="photos">
+            <image src="../../image/log.png"></image>
+          </view>
+          <view>6号</view>
+        </view>
+        <view class="other-talks">
+          离散数学
+        </view>
+      </view>
+    </scroll-view>
+  </view>
 
-      <view class="vote-block">
-        <view class="vote-photos"><image src="../../image/log.png"></image></view>
-        <text>1号</text>
-      </view>
-      <view class="vote-block">
-        <view class="vote-photos"><image src="../../image/log.png"></image></view>
-        <text>2号</text>
-      </view>
-      <view class="vote-block">
-        <view class="vote-photos"><image src="../../image/log.png"></image></view>
-        <text>3号</text>
-      </view>
-      <view class="vote-block">
-        <view class="vote-photos"><image src="../../image/log.png"></image></view>
-        <text>4号</text>
-      </view>
-      <view class="vote-block">
-        <view class="vote-photos"><image src="../../image/log.png"></image></view>
-        <text>5号</text>
-      </view>
-      <!-- <view class="vote-block">
+  <!-- 投票 -->
+  <view class="vote" wx:if="{{isVote}}">
+    <view class="vote-window">
+      <view class="vote-tips">请选择你要投选的号码</view>
+      <view class="vote-list">
+
+        <view class="vote-block">
+          <view class="vote-photos">
+            <image src="../../image/log.png"></image>
+          </view>
+          <text>1号</text>
+        </view>
+        <view class="vote-block">
+          <view class="vote-photos">
+            <image src="../../image/log.png"></image>
+          </view>
+          <text>2号</text>
+        </view>
+        <view class="vote-block">
+          <view class="vote-photos">
+            <image src="../../image/log.png"></image>
+          </view>
+          <text>3号</text>
+        </view>
+        <view class="vote-block">
+          <view class="vote-photos">
+            <image src="../../image/log.png"></image>
+          </view>
+          <text>4号</text>
+        </view>
+        <view class="vote-block">
+          <view class="vote-photos">
+            <image src="../../image/log.png"></image>
+          </view>
+          <text>5号</text>
+        </view>
+        <!-- <view class="vote-block">
         <image src="../../image/log.png"></image>
         <text>1号</text>
       </view> -->
 
+      </view>
+      <view class="vote-btn">投票</view>
     </view>
-    <view class="vote-btn">投票</view>
   </view>
-</view>
-<!-- 有人出局 但不是自己 -->
-<view class="out-tips" wx:if="{{!isOut&&outWindow}}">
-  <view>3号玩家出局,游戏继续</view>
-</view>
-<!-- 自己出局 -->
-<view class="mine-out" wx:if="{{isOut}}">
+  <!-- 有人出局 但不是自己 -->
+  <view class="out-tips" wx:if="{{!isOut&&outWindow}}">
+    <view>3号玩家出局,游戏继续</view>
+  </view>
+  <!-- 自己出局 -->
+  <view class="mine-out" wx:if="{{isOut}}">
 
-</view>
-<!-- 游戏结束 -->
-<view class="over-tips" wx:if="{{isOver}}">
-  <view class="over-window">
-    <view class="over-body">
-    <view>游戏结束,间谍获胜</view>
-    <view class="score-add">积分 +10</view>
-    <view class="details-show">
-      <view class="list">
-        <!-- 卧底词 -->
-        <view class="word-show">二叉树</view>
-        <view class="victory" wx:if="{{spyVictory}}"><image src="../../image/victory.png"></image></view>
-        <view class="user-list-block">
-          <image src="../../image/log.png"></image>
-          <view class="user-list-details">
-            <view>1号</view>
-            <view>ved</view>
+  </view>
+  <!-- 游戏结束 -->
+  <view class="over-tips" wx:if="{{isOver}}">
+    <view class="over-window">
+      <view class="over-body">
+        <view>游戏结束,间谍获胜</view>
+        <view class="score-add">积分 +10</view>
+        <view class="details-show">
+          <view class="list">
+            <!-- 卧底词 -->
+            <view class="word-show">二叉树</view>
+            <view class="victory" wx:if="{{spyVictory}}">
+              <image src="../../image/victory.png"></image>
+            </view>
+            <view class="user-list-block">
+              <image src="../../image/log.png"></image>
+              <view class="user-list-details">
+                <view>1号</view>
+                <view>ved</view>
+              </view>
+            </view>
+          </view>
+          <view class="list">
+            <view class="word-show">哈夫曼树</view>
+            <view class="victory" wx:if="{{otherVictory}}">
+              <image src="../../image/victory.png"></image>
+            </view>
+            <view class="user-list-block">
+              <image src="../../image/log.png"></image>
+              <view class="user-list-details">
+                <view>1号</view>
+                <view>ved</view>
+              </view>
+            </view>
+            <view class="user-list-block">
+              <image src="../../image/log.png"></image>
+              <view class="user-list-details">
+                <view>1号</view>
+                <view>ved</view>
+              </view>
+            </view>
+            <view class="user-list-block">
+              <image src="../../image/log.png"></image>
+              <view class="user-list-details">
+                <view>1号</view>
+                <view>ved</view>
+              </view>
+            </view>
+            <view class="user-list-block">
+              <image src="../../image/log.png"></image>
+              <view class="user-list-details">
+                <view>1号</view>
+                <view>ved</view>
+              </view>
+            </view>
+            <view class="user-list-block">
+              <image src="../../image/log.png"></image>
+              <view class="user-list-details">
+                <view>1号</view>
+                <view>ved</view>
+              </view>
+            </view>
+
           </view>
         </view>
       </view>
-      <view class="list">
-        <view class="word-show">哈夫曼树</view>
-        <view class="victory" wx:if="{{otherVictory}}"><image src="../../image/victory.png"></image></view>
-        <view class="user-list-block">
-          <image src="../../image/log.png"></image>
-          <view class="user-list-details">
-            <view>1号</view>
-            <view>ved</view>
-          </view>
-        </view>
-        <view class="user-list-block">
-          <image src="../../image/log.png"></image>
-          <view class="user-list-details">
-            <view>1号</view>
-            <view>ved</view>
-          </view>
-        </view>
-        <view class="user-list-block">
-          <image src="../../image/log.png"></image>
-          <view class="user-list-details">
-            <view>1号</view>
-            <view>ved</view>
-          </view>
-        </view>
-        <view class="user-list-block">
-          <image src="../../image/log.png"></image>
-          <view class="user-list-details">
-            <view>1号</view>
-            <view>ved</view>
-          </view>
-        </view>
-        <view class="user-list-block">
-          <image src="../../image/log.png"></image>
-          <view class="user-list-details">
-            <view>1号</view>
-            <view>ved</view>
-          </view>
-        </view>
 
+      <view class="over-control">
+        <view class="back">返回房间</view>
+        <view class="toindex">返回主页</view>
       </view>
-
-
-
-    </view>
-    </view>
-    
-    <view class="over-control">
-      <view class="back">返回房间</view>
-      <view class="toindex">返回主页</view>
     </view>
   </view>
-</view>
 
-<view class="talk-control" wx:if="{{!isOut}}">
-  <input class="input" placeholder="请输入内容,20字以内"></input>
-  <text class="send-btn" wx:if="{{sendMsg}}" bindtap="sendMsg">发送</text>
-  <text class="send-btn" wx:else>发送</text>
-</view>
-<view class="talk-control" wx:if="{{isOut}}">
-  您已出局,观战中
-</view>
-</view>
 
+
+  <view class="talk-control" wx:if="{{!isOut}}">
+    <input class="input" placeholder="请输入内容,20字以内"></input>
+    <text class="send-btn" wx:if="{{sendMsg}}" bindtap="sendMsg">发送</text>
+    <text class="send-btn" wx:else>发送</text>
+  </view>
+  <view class="talk-control" wx:if="{{isOut}}">
+    您已出局,观战中
+  </view>
+</view>

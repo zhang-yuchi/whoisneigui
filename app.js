@@ -1,5 +1,6 @@
 //app.js
 App({
+  wsHost: "ws://10.4.223.246:8082/game/1",
   onLaunch: function () {
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []

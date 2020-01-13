@@ -32,7 +32,7 @@
   text-align: center;
   padding: 30rpx 0;
   font-weight: bold;
-  margin: 0 auto;
+  margin: 20rpx auto;
 }
 .ready-user-list{
   width: 90%;
@@ -40,7 +40,7 @@
   padding-top: 20rpx;
   margin: 5rpx auto 0;
   background-color: white;
-  height: 80%;
+  height: 76%;
 }
 .ready-user{
   padding: 20rpx ;
@@ -92,6 +92,43 @@
   box-shadow: 0 0 3rpx 3rpx #f1f1f1;
   background-color: white;
 }
+.back{
+  background-color: rgba(0,0,0,0.6);
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+}
+.back-window{
+  border-radius: 20rpx;
+  background-color: white;
+  width: 50%;
+  margin: 0 auto;
+  margin-top: -290rpx;
+}
+.back-body{
+  padding: 30rpx;
+  text-align: center;
+}
+.back-control{
+  display: flex;
+  border-top: 1rpx solid #f1f1f1;
+}
+.back-control view{
+  flex: 1;
+  text-align: center;
+  padding: 15rpx 20rpx;
+}
+.back-control view:first-of-type{
+  background-color: rgb(255, 251, 240);
+}
+.back-control view:last-of-type{
+  background-color: rgb(255, 209, 69);
+}
 .invite{
   position: absolute;
   width: 15%;
@@ -100,7 +137,7 @@
   background-color: rgb(115, 161, 235);
   color: white;
   right: 10rpx;
-  top: 0;
+  top: 20rpx;
   border-radius: 20rpx;
 }
 .ready-user-name-invite{

@@ -21,9 +21,37 @@ Page({
     spyVictory:false,//卧底获胜
     otherVictory:true,//平民获胜
 
-    countTime:0//倒计时时间
+    countTime:0,//倒计时时间
+    back:false,
   },
-
+  back(){
+    this.setData({
+      back:true
+    })
+  },
+  backcancel(){
+    this.setData({
+      back:false
+    })
+  },
+  //退出房间
+  backsure(){
+    room_thread.close({
+      success(){
+        wx.reLaunch({
+          url: '../index/index',
+        })
+      },
+      fail(err){
+        console.log(err)
+      },
+      complete(){
+        wx.reLaunch({
+          url: '../index/index',
+        })
+      }
+    })
+  },
   readytogame(){
     let that = this
     this.setData({
@@ -47,14 +75,16 @@ Page({
   onLoad: function (options) {
     let that = this
     //先开启连接
-    // room_thread = wx.connectSocket({
-    //   url: 'ws://localhost:3000',
-    //   success(SocketTask){
-    //     // console.log(SocketTask)
-    //     console.log("连接成功")
-    //   }
-    // })
-    
+    room_thread = wx.connectSocket({
+      url: 'ws://10.4.223.246:8082/game/1',
+      success(SocketTask){
+        // console.log(SocketTask)
+        console.log("连接成功")
+      }
+    })
+    room_thread.onMessage((data)=>{
+      console.log(data)
+    })
   },
 
   /**
@@ -68,7 +98,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    
   },
 
   /**

@@ -1,10 +1,67 @@
 <!--pages/game/game.wxml-->
-<view class="start" >
+<!-- 准备 -->
+<view class="ready" wx:if="{{!isStart}}">
+  <view class="ready-nav"><image src="../../image/left.png"></image><text>ved的房间</text></view>
+  <scroll-view class="ready-user-list" scroll-y="true">
+
+    <view class="ready-user">
+      <view class="ready-photos"><image src="../../image/log.png"></image></view>
+      <view class="ready-info">
+        <view class="ready-user-name"><text>ved</text><image src="../../image/owner.png" class="owner"></image></view>
+        <view class="score">积分:100分</view>
+      </view>
+    </view>
+<view class="ready-user">
+      <view class="ready-photos"><image src="../../image/log.png"></image><image src="../../image/ready"></image></view>
+      <view class="ready-info">
+        <view class="ready-user-name">ved</view>
+        <view class="score">积分:100分</view>
+      </view>
+    </view>
+    <view class="ready-user">
+      <view class="ready-photos"><image src="../../image/log.png"></image></view>
+      <view class="ready-info">
+        <view class="ready-user-name">ved</view>
+        <view class="score">积分:100分</view>
+      </view>
+    </view>
+    <view class="ready-user">
+      <view class="ready-photos"><image src="../../image/log.png"></image></view>
+      <view class="ready-info">
+        <view class="ready-user-name">ved</view>
+        <view class="score">积分:100分</view>
+      </view>
+    </view>
+    <view class="ready-user">
+      <view class="ready-photos"><image src="../../image/log.png"></image></view>
+      <view class="ready-info">
+        <view class="ready-user-name">ved</view>
+        <view class="score">积分:100分</view>
+      </view>
+    </view>
+    <!-- 待邀请 -->
+    <view class="ready-user">
+      <view class="ready-photos"><image src="../../image/invite.png"></image></view>
+      <view class="ready-info">
+        <view class="ready-user-name-invite">待邀请</view>
+      </view>
+    </view>
+
+    
+  </scroll-view>
+  <view class="ready-control">
+    <view class="start-btn">开始游戏</view>
+    <view class="invite">+ 邀请</view>
+  </view>
+</view>
+
+
+<!-- 游戏开始 -->
+<view class="start" wx:if="{{isStart}}">
 <image src="../../image/log.png" class="background"></image>
 <view class="user-list">
   <image class="leave" src="../../image/left.png"></image>
   <view class="users">
-
   <view class="userinfo"><image src="../../image/log.png"></image> <text class="name">ved</text></view>
   <view class="userinfo"><image src="../../image/log.png"></image> <text class="name">ved</text></view>
   <view class="userinfo"><image src="../../image/log.png"></image> <text class="name">ved</text></view>
@@ -86,7 +143,6 @@
        离散数学
       </view>
     </view>
-
   </scroll-view>
 </view>
 

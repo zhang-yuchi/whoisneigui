@@ -7,7 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    isStart:false
   },
   sendMsg(){
     // console.log(111)

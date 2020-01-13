@@ -1,0 +1,91 @@
+.ready{
+  height: 100%;
+}
+.ready-nav{
+  position: relative;
+  padding: 20rpx 10rpx;
+  background-color: white;
+  box-shadow: 0 2rpx 3rpx 3rpx #f1f1f1;
+  height: 5%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ready-nav image{
+  position: absolute;
+  left: 10rpx;
+  height: 50rpx;
+  width: 50rpx;
+}
+.owner{
+  width: 50rpx;
+  height: 50rpx;
+}
+.ready-user-name{
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+}
+.start-btn{
+  background-color: rgb(255, 217, 62);
+  width: 50%;
+  text-align: center;
+  padding: 30rpx 0;
+  font-weight: bold;
+  margin: 0 auto;
+}
+.ready-user-list{
+  width: 90%;
+  box-sizing: border-box;
+  padding-top: 20rpx;
+  margin: 5rpx auto 0;
+  background-color: white;
+  height: 80%;
+}
+.ready-user{
+  padding: 20rpx ;
+  display: flex;
+  align-items: center;
+}
+.ready-photos{
+  margin-right: 20rpx;
+  width: 100rpx;
+  height: 100rpx;
+  overflow: hidden;
+  border-radius: 50%;
+  border: 1rpx solid rgb(209, 204, 204);
+}
+.ready-photos image{
+  width: 100%;
+  height: 100%;
+}
+.ready-user-name{
+  font-weight: bold;
+  font-size: 40rpx;
+}
+
+.ready-control{
+  /* position: relative; */
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 15%;
+  box-shadow: 0 0 3rpx 3rpx #f1f1f1;
+  background-color: white;
+}
+.invite{
+  position: absolute;
+  width: 15%;
+  text-align: center;
+  padding: 20rpx;
+  background-color: rgb(115, 161, 235);
+  color: white;
+  right: 10rpx;
+  top: 0;
+  border-radius: 20rpx;
+}
+.ready-user-name-invite{
+  font-weight: bold;
+  font-size: 38rpx;
+  color: rgb(236, 201, 60)
+}

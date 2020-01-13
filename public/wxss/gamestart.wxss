@@ -124,19 +124,21 @@
 }
 /* 对方的语言气泡 */
 .other-talks,.mine-talks{
-  color: white;
+  color: #333;
   font-size: 36rpx;
   letter-spacing: 1.6rpx;
   padding: 20rpx;
   max-width: 400rpx;
 }
 .other-talks{
-  background-color: rgb(22, 152, 249);
+  background-color: rgb(255, 217, 62);
+  margin-left: 10rpx;
   border-top-right-radius: 20rpx;
   border-bottom-left-radius: 20rpx;
   border-bottom-right-radius: 20rpx;
 }
 .mine-talks{
+  margin-right: 10rpx;
   background-color: white;
   color: #333;
   border-top-left-radius: 20rpx;
@@ -179,8 +181,9 @@
 .send-btn{
   display: block;
   padding: 15rpx 30rpx;
-  background-color: rgb(108, 224, 255);
-  border-radius: 10rpx;
+  background-color: rgb(194, 118, 43);
+  border-radius: 28rpx;
+  border: 6rpx solid rgb(246, 173, 88);
   color: white;
   /* position: absolute; */
   /* right: 20rpx; */

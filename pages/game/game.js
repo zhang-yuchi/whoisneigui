@@ -7,8 +7,17 @@ Page({
    * 页面的初始数据
    */
   data: {
-    isStart:false
+    isStart:false//判断游戏是否开始
   },
+  readytogame(){
+    console.log(111)
+    let that = this
+    this.setData({
+      isStart:true
+    })
+  },
+
+
   sendMsg(){
     // console.log(111)
     room_thread.send({
@@ -23,13 +32,13 @@ Page({
    */
   onLoad: function (options) {
     //先开启连接
-    room_thread = wx.connectSocket({
-      url: 'ws://localhost:3000',
-      success(SocketTask){
-        // console.log(SocketTask)
-        console.log("连接成功")
-      }
-    })
+    // room_thread = wx.connectSocket({
+    //   url: 'ws://localhost:3000',
+    //   success(SocketTask){
+    //     // console.log(SocketTask)
+    //     console.log("连接成功")
+    //   }
+    // })
     
   },
 

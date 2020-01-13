@@ -12,7 +12,10 @@
       </view>
     </view>
 <view class="ready-user">
-      <view class="ready-photos"><image src="../../image/log.png"></image><image src="../../image/ready"></image></view>
+      <view class="ready-photos ready-person">
+      <image src="../../image/log.png"></image>
+      <image class="isready"  src="../../image/ready.png"></image>
+      </view>
       <view class="ready-info">
         <view class="ready-user-name">ved</view>
         <view class="score">积分:100分</view>
@@ -50,7 +53,7 @@
     
   </scroll-view>
   <view class="ready-control">
-    <view class="start-btn">开始游戏</view>
+    <view class="start-btn" bindtap="readytogame">开始游戏</view>
     <view class="invite">+ 邀请</view>
   </view>
 </view>

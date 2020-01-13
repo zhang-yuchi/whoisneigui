@@ -1,11 +1,12 @@
 // pages/login/login.js
+var app = getApp();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    userInfo: {}
   },
 
   /**
@@ -49,7 +50,46 @@ Page({
   onPullDownRefresh: function () {
 
   },
+  getUserInfo: function (e) {
+    var that = this;
+    console.log(e.detail)
+    if (e.detail.errMsg == "getUserInfo:ok"){
+      wx.setStorageSync('userInfo', JSON.parse(e.detail.rawData))
+      console.log(wx.getStorageSync("userInfo"))
+      wx.setStorageSync("authImg", wx.getStorageSync("userInfo").avatarUrl)
+      //邀请进来
 
+
+
+      //自己进来
+      console.log('自己进来')
+      wx.reLaunch({
+        url: '../index/index'
+      })
+
+      that.setData({
+        userInfo: e.detail.userInfo
+      })
+    }else{
+      wx.showToast({
+        title: '授权失败',
+        icon:'none'
+      })
+    }
+    
+    // new Promise(resolve => {
+    //   wx.getUserInfo({
+    //     lang: "zh_CN",
+    //     success(res) {
+    //       console.log("entry")
+    //       app.globalData.userInfo = res.userInfo
+    //       wx.setStorageSync('userInfo', res.userInfo)
+    //       console.log(wx.getStorageSync("userInfo"))
+    //       resolve()
+    //     },
+    //   })
+    // })
+  },
   /**
    * 页面上拉触底事件的处理函数
    */

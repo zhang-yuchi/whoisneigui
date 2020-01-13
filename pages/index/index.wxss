@@ -1,29 +1,194 @@
-/**index.wxss**/
-.container{
-  width:100%;
+page{
+  width: 100%;
+  height: 100%;
+}
+.container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
 
+.head-wrap {
+  width: 100%;
+  height: 15%;
+  background: linear-gradient(rgb(243, 138, 1), rgb(255, 217, 62));
 }
-.details{
-  width: 80%;
-  margin: 40rpx auto;
-  background-color: red;
-  display: flex;
-  justify-content: center;
-  align-content: center;
+
+.userInfo {
+  width: 100%;
+  height: 100rpx;
+  position: relative;
 }
-.userImg{
+
+.userImg {
+  box-sizing: border-box;
+  border: 10rpx solid white;
   width: 200rpx;
   height: 200rpx;
-  margin: 0 20rpx;
+  border-radius: 50%;
+  position: absolute;
+  top: -100rpx;
+  left: 50%;
+  margin-left: -100rpx;
 }
-.userInfo{
-  width: 300rpx;
-  height: 200rpx;
-  margin:0 20rpx;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-}
-.center-text{
+
+.userName {
+  font-size: 40rpx;
+  font-weight: 600;
+  margin-top: 30rpx;
   text-align: center;
+  padding: 10rpx 0;
+}
+
+.userId {
+  font-size: 28rpx;
+  text-align: center;
+  color: rgb(150, 148, 148);
+}
+
+.item {
+  width: 90%;
+  margin: 40rpx auto 0 auto;
+  letter-spacing: 4rpx;
+  border-radius: 14rpx;
+  box-shadow:8rpx 8rpx 10rpx rgba(232, 232, 235, 0.6),-8rpx 8rpx 10rpx rgba(232, 232, 235, 0.6),8rpx 8rpx 10rpx rgba(232, 232, 235, 0.6),8rpx -8rpx 10rpx rgba(232, 232, 235, 0.6);
+}
+.list{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cupImg {
+  width: 100rpx;
+  height: 100rpx;
+  padding: 20rpx 10rpx;
+}
+.gameWrap{
+  margin-top: 60rpx;
+  height: 460rpx;
+}
+.gameImg{
+  width: 140rpx;
+  height: 140rpx;
+  margin: 20rpx 40rpx 20rpx 0;
+}
+.item-list{
+  width: 75%;
+  height: 230rpx;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.border{
+  border-bottom: 2px solid rgb(224, 221, 221);
+}
+.wrap{
+  width: 100%;
+  height: 100%;
+  opacity: .5;
+  background-color: rgb(224, 221, 221);
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.rank{
+  box-sizing: border-box;
+  width: 600rpx;
+  height: 800rpx;
+  position: absolute;
+  top: 200rpx;
+  left: 50%;
+  margin-left: -300rpx;
+  background-color: white;
+  border-radius: 10rpx;
+  opacity: 1;
+  z-index: 999;
+}
+
+
+.closeImg{
+  width: 60rpx;
+  height: 60rpx;
+  position: fixed;
+  right: 12rpx;
+}
+.rankItem{
+  box-sizing: border-box;
+  width: 100%;
+  height: 100rpx;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
+  padding: 10rpx 0;
+}
+.rank-name{
+  width: 200rpx;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.rank-score{
+  width: 140rpx;
+}
+.medalImg{
+  width: 80rpx;
+  height: 80rpx;
+  position: absolute;
+}
+.rankImg{
+  width: 100rpx;
+  height: 100rpx;
+  margin-left: 100rpx;
+  border-radius: 50%;
+}
+.joinGame{
+  width: 700rpx;
+  margin-left: -350rpx;
+}
+.joinGame-title{
+  text-align: center;
+  margin: 30rpx 0;
+}
+.game-list{
+  width: 700rpx;
+  height: 700rpx;
+}
+.room{
+  box-sizing: border-box;
+  width: 330rpx;
+  float: left;
+  height: 200rpx;
+   box-shadow:8rpx 8rpx 10rpx rgba(232, 232, 235, 0.6),-8rpx 8rpx 10rpx rgba(232, 232, 235, 0.6),8rpx 8rpx 10rpx rgba(232, 232, 235, 0.6),8rpx -8rpx 10rpx rgba(232, 232, 235, 0.6);
+  /* height: 200rpx; */
+  margin: 10rpx;
+}
+.roomInfo{
+  box-sizing: border-box;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  justify-content:space-around;
+  align-content: center;
+  text-indent: 10rpx;
+}
+.creGame{
+  top: 400rpx;
+  height: 400rpx;
+  padding-top: 20rpx;
+}
+.creBox{
+  width: 80%;
+  margin: 0 auto;
+}
+.creGame-input{
+  display: flex;
+  margin: 50rpx 0;
+  
+}
+.creBtn{
+  background-color: rgb(240, 238, 238);
 }

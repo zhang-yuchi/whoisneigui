@@ -68,16 +68,17 @@
 <image src="../../image/log.png" class="background"></image>
 <view class="user-list">
   <image class="leave" src="../../image/left.png"></image>
-  <view class="users">
+<scroll-view class="users" scroll-x="true">
   <view class="userinfo"><view class="uphoto out"><image src="../../image/log.png"></image></view> <text class="name">ved</text></view>
   <view class="userinfo"><view class="uphoto"><image src="../../image/log.png"></image></view> <text class="name">ved</text></view>
   <view class="userinfo"><view class="uphoto"><image src="../../image/log.png"></image></view> <text class="name">ved</text></view>
   <view class="userinfo"><view class="uphoto"><image src="../../image/log.png"></image></view> <text class="name">vedasdfasdf</text></view>
   <view class="userinfo"><view class="uphoto"><image src="../../image/log.png"></image></view><text class="name">ved</text></view>
   <view class="userinfo"><view class="uphoto"><image src="../../image/log.png"></image></view><text class="name">ved</text></view>
+  <view class="userinfo"><view class="uphoto"><image src="../../image/log.png"></image></view><text class="name">ved</text></view>
 
 
-  </view>
+  </scroll-view>
   
 </view>
 <view class="talk-content">

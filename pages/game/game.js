@@ -14,7 +14,7 @@ Page({
     voteList:[],//投票列表
     isVote:false,//是否投票
     isOut:false,//自己是否出局?
-    isOver:true,//游戏是否结束
+    isOver:false,//游戏是否结束
     userlist:[],//所有用户列表
     outWindow:false,//是否打开出局弹框
     sendMsg:false,//是否能发送数据(自己的回合)

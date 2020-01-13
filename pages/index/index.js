@@ -11,7 +11,8 @@ Page({
     rankDisplay:'none',
     wrapDisplay:'none',
     joinDisplay:'none',
-    creDisplay:'none'
+    creDisplay:'none',
+    roomNum:0
   },
   //事件处理函数
   bindViewTap: function() {
@@ -53,6 +54,25 @@ Page({
     this.setData({
       wrapDisplay: 'none',
       creDisplay: 'none'
+    })
+  },
+  getPnum:function(e){
+    let num = e.detail.value;
+    if(num>=5 && num <=10){
+      this.setData({
+        roomNum: num
+      })
+    }
+    else{
+      wx.showToast({
+        title: '请输入正确的房间人数',
+        icon:'none'
+      })
+    }
+  },
+  creRoom:function(){
+    wx.navigateTo({
+      url: '../game/game',
     })
   },
   onLoad: function () {

@@ -108,15 +108,13 @@
     <image src="../../image/close.png" class="closeImg" bindtap="closeCregame"></image>
     <view class="creBox">
       <view class="creGame-input">
-        房间名：
-        <input type="text" placeholder="{{userInfo.nickName}}的房间"></input>
+        房名：<input type="text" value="{{userInfo.nickName}}的房间"></input>
       </view>
 
       <view class="creGame-input">
-        人数：
-        <input type="number" placeholder="5-10人"></input>
+        人数：<input type="number" placeholder="5-10人" bindinput="getPnum"></input>
       </view>
-      <button class="creBtn">创建</button>
+      <view class="creBtn" bindtap="toCreroom">创建</view>
     </view>
 
   </view>

@@ -1,22 +1,124 @@
 <!--index.wxml-->
 <view class="container">
-  <view class="details">
-    <image class="userImg" src=""></image>
-    <view class="userInfo">
-      <view class="center-text">ved</view>
-      <view class="center-text">zyc201702772</view>
-      <view class="center-text">最强王者LV100</view>
+  <view class="head-wrap"></view>
+  <view class="userInfo">
+    <image class="userImg" src="{{userInfo.avatarUrl}}"></image>
+  </view>
+  <view class="userName">{{userInfo.nickName}}</view>
+  <view class="item list" bindtap="toRank">
+    <image src="../../image/cup.png" class="cupImg"></image>
+    <text>我的排名</text>
+  </view>
+  <view class="item gameWrap">
+    <view class="item-list border"  bindtap="toCregame">
+      <image src="../../image/battle.png" class="gameImg"></image>
+      <text>创建游戏</text>
+    </view>
+    <view class="item-list" bindtap="toRoomlist">
+      <image src="../../image/add.png" class="gameImg"></image>
+      <text>加入对局</text>
     </view>
   </view>
-  <view class="center-text">
-    我的排行
-  </view>
-  <view>
-    <view>
-      创建游戏
+  <view class="wrap" style="display:{{wrapDisplay}}"></view>
+  <scroll-view class="rank" style="display:{{rankDisplay}}" scroll-y='true'>
+    <image src="../../image/close.png" class="closeImg" bindtap="closeRank"></image>
+    <view class="rankItem">
+      <image src="../../image/first.png" class="medalImg"></image>
+      <image class="rankImg" src="../../image/tiren.png"></image>
+      <view class="rank-name">nickName</view>
+      <view class="rank-score">1500</view>
     </view>
-    <view>
-      加入游戏
-    </view>
+  </scroll-view>
+
+  <view class="joinGame rank" style="display:{{joinDisplay}}">
+    <image src="../../image/close.png" class="closeImg" bindtap="closeRoomlist"></image>
+    <view class="joinGame-title">点击下列房间加入</view>
+    <scroll-view class="game-list" scroll-y='true'>
+      <view class="room">
+        <view class="roomInfo">
+          <view class="room-title">次兔兔的房间</view>
+          <view>房主：次兔兔</view>
+          <view>人数：1/6</view>
+        </view>
+      </view>
+
+      <view class="room">
+        <view class="roomInfo">
+          <view>次兔兔的房间</view>
+          <view>房主：次兔兔</view>
+          <view>人数：1/6</view>
+        </view>
+      </view>
+      <view class="room">
+        <view class="roomInfo">
+          <view class="room-title">次兔兔的房间</view>
+          <view>房主：次兔兔</view>
+          <view>人数：1/6</view>
+        </view>
+      </view>
+      <view class="room">
+        <view class="roomInfo">
+          <view class="room-title">次兔兔的房间</view>
+          <view>房主：次兔兔</view>
+          <view>人数：1/6</view>
+        </view>
+      </view>
+      <view class="room">
+        <view class="roomInfo">
+          <view class="room-title">次兔兔的房间</view>
+          <view>房主：次兔兔</view>
+          <view>人数：1/6</view>
+        </view>
+      </view>
+      <view class="room">
+        <view class="roomInfo">
+          <view class="room-title">次兔兔的房间</view>
+          <view>房主：次兔兔</view>
+          <view>人数：1/6</view>
+        </view>
+      </view>
+      <view class="room">
+        <view class="roomInfo">
+          <view class="room-title">次兔兔的房间</view>
+          <view>房主：次兔兔</view>
+          <view>人数：1/6</view>
+        </view>
+      </view>
+      <view class="room">
+        <view class="roomInfo">
+          <view class="room-title">次兔兔的房间</view>
+          <view>房主：次兔兔</view>
+          <view>人数：1/6</view>
+        </view>
+      </view>
+      <view class="room">
+        <view class="roomInfo">
+          <view class="room-title">次兔兔的房间</view>
+          <view>房主：次兔兔</view>
+          <view>人数：1/6</view>
+        </view>
+      </view>
+
+
+    </scroll-view>
   </view>
+
+
+  <view class="creGame rank" style="display:{{creDisplay}}">
+    <image src="../../image/close.png" class="closeImg" bindtap="closeCregame"></image>
+    <view class="creBox">
+      <view class="creGame-input">
+        房间名：
+        <input type="text" placeholder="{{userInfo.nickName}}的房间"></input>
+      </view>
+
+      <view class="creGame-input">
+        人数：
+        <input type="number" placeholder="5-10人"></input>
+      </view>
+      <button class="creBtn">创建</button>
+    </view>
+
+  </view>
+
 </view>

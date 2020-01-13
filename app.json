@@ -1,9 +1,10 @@
 {
   "pages": [
-    "pages/game/game",
+    "pages/login/login",
     "pages/index/index",
+    "pages/game/game"
     
-    "pages/login/login"
+    
   ],
   "window": {
     "backgroundTextStyle": "light",

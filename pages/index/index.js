@@ -7,7 +7,11 @@ Page({
     motto: 'Hello World',
     userInfo: {},
     hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    rankDisplay:'none',
+    wrapDisplay:'none',
+    joinDisplay:'none',
+    creDisplay:'none'
   },
   //事件处理函数
   bindViewTap: function() {
@@ -15,7 +19,42 @@ Page({
       url: '../logs/logs'
     })
   },
-  
+  toRank: function(){
+    this.setData({
+      wrapDisplay:'block',
+      rankDisplay: 'block'
+    })
+  },
+  closeRank: function(){
+    this.setData({
+      wrapDisplay:'none',
+      rankDisplay: 'none'
+    })
+  },
+  toRoomlist:function(){
+    this.setData({
+      joinDisplay:'block',
+      wrapDisplay:'block'
+    })
+  },
+  closeRoomlist:function(){
+    this.setData({
+      wrapDisplay:'none',
+      joinDisplay:'none'
+    })
+  },
+  toCregame:function(){
+    this.setData({
+      wrapDisplay:'block',
+      creDisplay:'block'
+    })
+  },
+  closeCregame:function(){
+    this.setData({
+      wrapDisplay: 'none',
+      creDisplay: 'none'
+    })
+  },
   onLoad: function () {
     if (app.globalData.userInfo) {
       this.setData({

@@ -7,10 +7,24 @@ Page({
    * 页面的初始数据
    */
   data: {
-    isStart:false//判断游戏是否开始
+
+    isowner:true,//是不是房主
+    word:"二叉树",//自己拿到的词语
+    isStart:false,//判断游戏是否开始
+    voteList:[],//投票列表
+    isVote:false,//是否投票
+    isOut:false,//自己是否出局?
+    isOver:true,//游戏是否结束
+    userlist:[],//所有用户列表
+    outWindow:false,//是否打开出局弹框
+    sendMsg:false,//是否能发送数据(自己的回合)
+    spyVictory:false,//卧底获胜
+    otherVictory:true,//平民获胜
+
+    countTime:0//倒计时时间
   },
+
   readytogame(){
-    console.log(111)
     let that = this
     this.setData({
       isStart:true
@@ -19,18 +33,19 @@ Page({
 
 
   sendMsg(){
-    // console.log(111)
-    room_thread.send({
-      data:"11111",
-      success(){
-        console.log(1111)
-      }
-    })
+    console.log(112)
+    // room_thread.send({
+    //   data:"11111",
+    //   success(){
+    //     console.log(1111)
+    //   }
+    // })
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let that = this
     //先开启连接
     // room_thread = wx.connectSocket({
     //   url: 'ws://localhost:3000',

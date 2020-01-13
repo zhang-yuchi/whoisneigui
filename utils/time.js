@@ -1,6 +1,6 @@
 let timer = {}
 //计时函数
-timer.countTime = (time,callback)=>{
+timer.countTime = (that,time,callback)=>{
   
 }
 

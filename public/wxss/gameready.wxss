@@ -46,6 +46,7 @@
   padding: 20rpx ;
   display: flex;
   align-items: center;
+  position: relative;
 }
 .ready-photos{
   position: relative;
@@ -106,4 +107,11 @@
   font-weight: bold;
   font-size: 38rpx;
   color: rgb(236, 201, 60)
+}
+.outman image{
+  width: 100rpx;
+  height: 100rpx;
+  right: 20rpx;
+  position: absolute;
+  top: 20rpx;
 }

@@ -1,0 +1,151 @@
+/* 投票弹框 */
+.vote{
+  position: fixed;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.4);
+}
+.vote-window{
+  width: 70%;
+  border-radius: 20rpx;
+  background-color: white;
+}
+.vote-list{
+  padding: 10rpx 90rpx;
+  display: flex;
+  flex-wrap: wrap;
+  /* margin-right: 30rpx; */
+  /* justify-content: space-between; */
+}
+.vote-block{
+  margin-right: 15rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+/* .vote-block image{
+  width: 100rpx;
+  height: 100rpx;
+
+} */
+.vote-tips{
+  padding: 20rpx;
+  text-align: center;
+  font-weight: bold;
+}
+.vote-photos{
+  overflow: hidden;
+  border-radius: 50%;
+  width: 100rpx;
+  height: 100rpx;
+  border: 1rpx solid #ebeaea;
+  box-sizing: border-box;
+}
+.vote-photos image{
+  width: 100%;
+  height: 100%;
+}
+.vote-btn{
+  width: 30%;
+  text-align: center;
+  padding: 20rpx;
+  margin: 30rpx auto;
+  background-color: rgb(255, 209, 69);
+  border-radius: 20rpx;
+}
+
+/* 出局弹窗 */
+.out-tips{
+  position: fixed;
+  top: 180rpx;
+  left: 50%;
+  transform: translate(-50%);
+  z-index: 80;
+  border: 10rpx solid rgb(194, 118, 43);
+  /* height: 50rpx; */
+  border-radius: 40rpx;
+  /* width: 50rpx; */
+  background-color: white;
+  padding: 50rpx 30rpx;
+  font-weight: bold;
+  
+}
+
+/* 游戏结束页面 */
+.over-tips{
+  z-index: 80;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0,0,0,0.4);
+}
+.over-window{
+  width: 80%;
+  background-color: white;
+  margin-top: -270rpx;
+}
+.over-body{
+  text-align: center;
+  padding: 40rpx 30rpx;
+  box-sizing: border-box;
+}
+.over-control{
+  display: flex;
+  border-top: 1rpx solid #f1f1f1;
+}
+.over-control view{
+  flex: 1;
+  text-align: center;
+  padding: 25rpx 30rpx;
+  border-right: 1rpx solid #f1f1f1;
+}
+.over-control view:first-of-type{
+  background-color: rgb(255, 251, 240);
+}
+.over-control view:last-of-type{
+  background-color: rgb(255, 209, 69);
+}
+.user-list-block image{
+  width: 50rpx;
+  height: 50rpx;
+}
+.details-show{
+  display: flex;
+
+}
+.list{
+  position: relative;
+  flex: 1;
+}
+.victory{
+  /* opacity: 0.7; */
+  position: absolute;
+  top: 0%;
+  width: 50rpx;
+  height: 50rpx;
+}
+.victory image{
+  width: 100%;
+  height: 100%;
+}
+
+.user-list-block{
+  display: flex;
+  align-items: center;
+  font-size: 30rpx;
+  justify-content: space-around;
+  margin-bottom: 10rpx;
+  padding-bottom: 10rpx;
+  border-bottom: 1rpx solid #f1f1f1;
+}

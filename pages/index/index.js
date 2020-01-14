@@ -71,7 +71,7 @@ Page({
     }
   },
   creRoom:function(){
-    wx.navigateTo({
+    wx.redirectTo({
       url: '../game/game',
     })
   },

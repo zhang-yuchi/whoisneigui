@@ -122,7 +122,7 @@
     <image src="../../image/close.png" class="closeImg" bindtap="closeCregame"></image>
     <view class="creBox">
       <view class="creGame-input">
-        房名：<input type="text" value="{{userInfo.nickName}}的房间"></input>
+        房名：<input type="text" value="{{roomName}}" bindinput="getRoomname"></input>
       </view>
 
       <view class="creGame-input">

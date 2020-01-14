@@ -12,7 +12,8 @@ Page({
     wrapDisplay:'none',
     joinDisplay:'none',
     creDisplay:'none',
-    roomNum:0
+    roomNum:0,
+    roomName:wx.getStorageSync('userInfo').nickName +'的房间'
   },
   //事件处理函数
   bindViewTap: function() {
@@ -70,9 +71,15 @@ Page({
       })
     }
   },
+  getRoomname:function(e){
+    this.setData({
+      roomName:e.detail.value
+    })
+  },
   creRoom:function(){
+    let that = this;
     wx.redirectTo({
-      url: '../game/game',
+      url: '../game/game?roomNum=' + that.data.roomNum+'&roomName=' +that.data.roomName,
     })
   },
   onLoad: function () {

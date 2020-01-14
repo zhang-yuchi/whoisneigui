@@ -59,17 +59,9 @@ Page({
   },
   getPnum:function(e){
     let num = e.detail.value;
-    if(num>=5 && num <=10){
-      this.setData({
-        roomNum: num
-      })
-    }
-    else{
-      wx.showToast({
-        title: '请输入正确的房间人数',
-        icon:'none'
-      })
-    }
+    this.setData({
+      roomNum: num
+    })
   },
   getRoomname:function(e){
     this.setData({
@@ -78,9 +70,18 @@ Page({
   },
   creRoom:function(){
     let that = this;
-    wx.redirectTo({
-      url: '../game/game?roomNum=' + that.data.roomNum+'&roomName=' +that.data.roomName,
-    })
+    if (that.data.roomNum >= 5 && that.data.roomNum <= 10) {
+      wx.redirectTo({
+        url: '../game/game?roomNum=' + that.data.roomNum + '&roomName=' + that.data.roomName,
+      })
+    }
+    else {
+      wx.showToast({
+        title: '请输入正确的房间人数',
+        icon: 'none'
+      })
+    }
+    
   },
   onLoad: function () {
     if (app.globalData.userInfo) {

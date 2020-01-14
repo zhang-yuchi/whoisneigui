@@ -388,7 +388,7 @@
 
   <!-- 发送消息 -->
   <view class="talk-control" wx:if="{{!isOut}}">
-    <input class="input" placeholder="请输入内容,20字以内"></input>
+    <input class="input" placeholder="请输入内容,20字以内" bindinput="getDescribe"></input>
     <text class="send-btn" wx:if="{{sendMsg}}" bindtap="sendMsg">发送</text>
     <text class="send-btn" wx:else>发送</text>
   </view>

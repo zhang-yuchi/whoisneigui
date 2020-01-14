@@ -1,6 +1,7 @@
 // pages/game/game.js
 const app = getApp()
 let room_thread = null
+var time = require('../../utils/time.js')
 Page({
 
   /**
@@ -18,7 +19,7 @@ Page({
     isOver:false,//游戏是否结束
     userlist:[],//所有用户列表
     outWindow:false,//是否打开出局弹框(是否有别人出局)
-    sendMsg:false,//是否能发送数据(自己的回合)
+    sendMsg:true,//是否能发送数据(自己的回合)
     spyVictory:false,//卧底获胜
     otherVictory:true,//平民获胜
 
@@ -26,6 +27,8 @@ Page({
     back:false,//是否开启返回弹窗
     isOutWindow:true,//是否关闭结束页面的弹窗 默认开启
     hiddenvalue:1,//倒计时的透明度
+    interval:null,//计时器
+    describe:'',//要发送的描述
   },
   back(){
     this.setData({
@@ -88,6 +91,18 @@ Page({
     this.setData({
       isStart:true
     })
+
+    //----------------时间计时
+    console.log('开始计时')
+    time.countTime(that, 15, function(that){
+      that.setData({
+        countTime:15
+      })
+    })
+
+
+
+
   },
   hiddenwindow(){
     let that = this
@@ -101,8 +116,41 @@ Page({
       })
     }
   },
+  getDescribe:function(e){
+    this.setData({
+      describe:e.detail.value
+    })
+  },
+  
 
   sendMsg(){
+    let word = this.data.word
+    let describe = this.data.describe
+    let flag = true
+    for(let w of word){
+      console.log(w)
+      let reg = new RegExp(w+'+','img')
+      let result = reg.test(describe)
+      console.log(result)
+      if (result){
+        wx.showToast({
+          title: '包含关键字，无法发送',
+          icon:'none'
+        })
+        flag = false;
+        break;
+      }
+    }
+    if (describe != '' && flag){
+      console.log('发送成功')
+      clearInterval(this.data.interval)
+      this.setData({
+        countTime: 15,
+        sendMsg: false
+      })
+    }
+    
+
     // console.log(112)
     // room_thread.send({
     //   data:"11111",
@@ -118,12 +166,9 @@ Page({
     let that = this
     console.log(options)
     if (wx.getStorageSync('userInfo')){
-      wx.showToast({
-        title: '有授权',
-      })
       //先开启连接
       room_thread = wx.connectSocket({
-        url: 'ws://10.4.223.246:8082/game/1',
+        url: 'ws://10.4.223.246:8082/game/10',
         success(SocketTask) {
           // console.log(SocketTask)
           console.log("连接成功")
@@ -133,9 +178,6 @@ Page({
         console.log(data)
       })
     }else{
-      wx.showToast({
-        title: '没有授权',
-      })
       wx.redirectTo({
         url: '../login/login?roomid=1', //-----------------roomid
       })

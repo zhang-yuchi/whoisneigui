@@ -100,8 +100,8 @@
   </scroll-view>
   <view class="ready-control">
     <view class="start-btn" bindtap="readytogame" wx:if="{{isowner}}">开始游戏</view>
-    <view class="start-btn" bindtap="readyfinish" wx:if="{{!isowner&&isready}}">准备</view>
-    
+    <view class="start-btn" bindtap="readyfinish" wx:if="{{!isowner&&!isready}}">准备</view>
+    <view class="start-btn" bindtap="readycancel" wx:if="{{!isowner&&isready}}">取消准备</view>
     <view class="invite">+ 邀请</view>
     <button class="invite inviteBtn" open-type="share">+ 邀请</button>
   </view>
@@ -125,7 +125,7 @@
 <view class="start" wx:if="{{isStart}}">
   <image src="../../image/log.png" class="background"></image>
   <view class="user-list">
-    <image class="leave" src="../../image/left.png"></image>
+    <image class="leave" bindtap="leaveroom" src="../../image/left.png"></image>
     <scroll-view class="users" scroll-x="true">
       <view class="userinfo">
         <view class="uphoto out">
@@ -308,7 +308,7 @@
     </view>
   </view>
   <!-- 到你了 -->
-  <view class="yourturn out-tips" wx:if="{{sendMsg}}">
+  <view class="yourturn out-tips" style="opacity:{{hiddenvalue}}" bindtap="hiddenwindow" wx:if="{{sendMsg}}">
     <view class="yourturntips">到你啦</view>
     <view class="turntime">{{countTime}}</view>
   </view>

@@ -194,3 +194,6 @@
   font-size: 40rpx;
   text-align: center;
 }
+.yourturn{
+  transition: 0.3s;
+}

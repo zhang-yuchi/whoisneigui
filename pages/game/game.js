@@ -9,6 +9,7 @@ Page({
   data: {
 
     isowner:true,//是不是房主
+    isready:false,
     word:"二叉树",//自己拿到的词语
     isStart:false,//判断游戏是否开始
     voteList:[],//投票列表
@@ -17,19 +18,39 @@ Page({
     isOver:false,//游戏是否结束
     userlist:[],//所有用户列表
     outWindow:false,//是否打开出局弹框(是否有别人出局)
-    sendMsg:true,//是否能发送数据(自己的回合)
+    sendMsg:false,//是否能发送数据(自己的回合)
     spyVictory:false,//卧底获胜
     otherVictory:true,//平民获胜
-    
+
     countTime:0,//倒计时时间
     back:false,//是否开启返回弹窗
     isOutWindow:true,//是否关闭结束页面的弹窗 默认开启
-    isCount:true,//是否开启计时弹窗
-
+    hiddenvalue:1,//倒计时的透明度
   },
   back(){
     this.setData({
       back:true
+    })
+  },
+  leaveroom(){
+    wx.showModal({
+      title: '退出',
+      content: '您要中途退出吗?',
+      success(){
+        console.log(111)
+      }
+    })
+  },
+  //准备
+  readyfinish(){
+    this.setData({
+      isready:true,
+    })
+  },
+  //取消准备
+  readycancel(){
+    this.setData({
+      isready:false,
     })
   },
   backcancel(){
@@ -67,10 +88,21 @@ Page({
       isStart:true
     })
   },
-
+  hiddenwindow(){
+    let that = this
+    if(that.data.hiddenvalue==0.1){
+      that.setData({
+        hiddenvalue:1
+      })
+    }else{
+      that.setData({
+        hiddenvalue: 0.1
+      })
+    }
+  },
 
   sendMsg(){
-    console.log(112)
+    // console.log(112)
     // room_thread.send({
     //   data:"11111",
     //   success(){

@@ -27,9 +27,6 @@ Page({
     isCount:true,//是否开启计时弹窗
 
   },
-  // isInvited:function(){
-    
-  // },
   back(){
     this.setData({
       back:true
@@ -86,18 +83,31 @@ Page({
    */
   onLoad: function (options) {
     let that = this
-    // isInvited();
-    //先开启连接
-    room_thread = wx.connectSocket({
-      url: 'ws://10.4.223.246:8082/game/1',
-      success(SocketTask){
-        // console.log(SocketTask)
-        console.log("连接成功")
-      }
-    })
-    room_thread.onMessage((data)=>{
-      console.log(data)
-    })
+    console.log(options)
+    if (wx.getStorageSync('userInfo')){
+      wx.showToast({
+        title: '有授权',
+      })
+      //先开启连接
+      room_thread = wx.connectSocket({
+        url: 'ws://10.4.223.246:8082/game/1',
+        success(SocketTask) {
+          // console.log(SocketTask)
+          console.log("连接成功")
+        }
+      })
+      room_thread.onMessage((data) => {
+        console.log(data)
+      })
+    }else{
+      wx.showToast({
+        title: '没有授权',
+      })
+      wx.redirectTo({
+        url: '../login/login?roomid=1', //-----------------roomid
+      })
+    }
+
   },
 
   /**
@@ -148,7 +158,7 @@ Page({
   onShareAppMessage: function (res) {
     return {
       title: '谁是卧底，快来玩呀',
-      path: '/pages/game/game'
+      path: '/pages/game/game?roomid=1'
     }
   }
 })

@@ -6,14 +6,24 @@ Page({
    * 页面的初始数据
    */
   data: {
-    userInfo: {}
+    userInfo: {},
+    roomid:''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    console.log(options)
+    if(options.roomid){
+      this.setData({
+        roomid:options.roomid
+      })
+    }else{
+      this.setData({
+        roomid:''
+      })
+    }
   },
 
   /**
@@ -61,16 +71,19 @@ Page({
       that.setData({
         userInfo: e.detail.userInfo
       })
+      
       //邀请进来
-
-
-
-      //自己进来
-      console.log('自己进来')
-      wx.reLaunch({
-        url: '../index/index'
-      })
-
+      if(that.data.roomid){
+        console.log('被邀请')
+        wx.redirectTo({
+          url: '../game/game?roomid=' + that.data.roomid,
+        })
+      } else {//自己进来
+        console.log('自己进来')
+        wx.reLaunch({
+          url: '../index/index'
+        })
+      }      
       
     }else{
       wx.showToast({

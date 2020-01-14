@@ -33,12 +33,13 @@ Page({
     })
   },
   leaveroom(){
+    let that = this
     wx.showModal({
       title: '退出',
       content: '您要中途退出吗?',
       success(){
         console.log(111)
-      }
+      },
     })
   },
   //准备

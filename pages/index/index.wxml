@@ -128,7 +128,7 @@
       <view class="creGame-input">
         人数：<input type="number" placeholder="5-10人" bindinput="getPnum"></input>
       </view>
-      <view class="creBtn" bindtap="toCreroom">创建</view>
+      <view class="creBtn" bindtap="creRoom">创建</view>
     </view>
 
   </view>

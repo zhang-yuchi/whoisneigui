@@ -1,10 +1,12 @@
 {
   "pages": [
     "pages/game/game",
+
     "pages/index/index",
     "pages/login/login"
     
     
+
     
     
   ],

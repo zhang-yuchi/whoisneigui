@@ -99,10 +99,11 @@
 
   </scroll-view>
   <view class="ready-control">
-    <view class="start-btn" bindtap="readytogame" wx:if="{{isOwner}}">开始游戏</view>
-    <view class="start-btn" bindtap="readyfinish" wx:if="{{!isOwner&&isready}}">准备</view>
+    <view class="start-btn" bindtap="readytogame" wx:if="{{isowner}}">开始游戏</view>
+    <view class="start-btn" bindtap="readyfinish" wx:if="{{!isowner&&isready}}">准备</view>
     
     <view class="invite">+ 邀请</view>
+    <button class="invite inviteBtn" open-type="share">+ 邀请</button>
   </view>
 
 <!-- 退出 -->

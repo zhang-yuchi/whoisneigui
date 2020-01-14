@@ -1,5 +1,5 @@
 // pages/login/login.js
-var app = getApp();
+const app = getApp();
 Page({
 
   /**
@@ -57,6 +57,10 @@ Page({
       wx.setStorageSync('userInfo', JSON.parse(e.detail.rawData))
       console.log(wx.getStorageSync("userInfo"))
       wx.setStorageSync("authImg", wx.getStorageSync("userInfo").avatarUrl)
+      app.globalData.userInfo = e.detail.userInfo
+      that.setData({
+        userInfo: e.detail.userInfo
+      })
       //邀请进来
 
 
@@ -67,9 +71,7 @@ Page({
         url: '../index/index'
       })
 
-      that.setData({
-        userInfo: e.detail.userInfo
-      })
+      
     }else{
       wx.showToast({
         title: '授权失败',

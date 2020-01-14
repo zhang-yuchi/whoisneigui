@@ -7,4 +7,11 @@ page{
   height: 100%;
   background-color: #f1f1f1;
 }
-
+.inviteBtn{
+  width: 15% !important;
+  font-weight: normal !important;
+  padding: 20rpx !important;
+  box-sizing: content-box !important;
+  z-index: 88;
+  opacity: 0;
+}

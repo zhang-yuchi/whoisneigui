@@ -131,7 +131,8 @@ page{
   white-space: nowrap;
 }
 .rank-score{
-  width: 140rpx;
+  width: 150rpx;
+  text-align: right;
 }
 .medalImg{
   width: 80rpx;
@@ -139,9 +140,9 @@ page{
   position: absolute;
 }
 .rankImg{
-  width: 100rpx;
-  height: 100rpx;
-  margin-left: 100rpx;
+  width: 80rpx;
+  height: 80rpx;
+  margin: 0 10rpx 0 80rpx;
   border-radius: 50%;
 }
 .joinGame{

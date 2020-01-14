@@ -20,13 +20,16 @@ Page({
     sendMsg:true,//是否能发送数据(自己的回合)
     spyVictory:false,//卧底获胜
     otherVictory:true,//平民获胜
-
+    
     countTime:0,//倒计时时间
     back:false,//是否开启返回弹窗
     isOutWindow:true,//是否关闭结束页面的弹窗 默认开启
     isCount:true,//是否开启计时弹窗
 
   },
+  // isInvited:function(){
+    
+  // },
   back(){
     this.setData({
       back:true
@@ -83,6 +86,7 @@ Page({
    */
   onLoad: function (options) {
     let that = this
+    // isInvited();
     //先开启连接
     room_thread = wx.connectSocket({
       url: 'ws://10.4.223.246:8082/game/1',
@@ -141,7 +145,10 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
-
+  onShareAppMessage: function (res) {
+    return {
+      title: '谁是卧底，快来玩呀',
+      path: '/pages/game/game'
+    }
   }
 })

@@ -149,3 +149,48 @@
   padding-bottom: 10rpx;
   border-bottom: 1rpx solid #f1f1f1;
 }
+
+.mine-out{
+  position: fixed;
+  z-index: 999;
+  display: flex;
+  top: 0;
+  left: 0;
+  background-color: rgba(0,0,0,0.4);
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+}
+.out-window{
+  width: 70%;
+  /* height: 500rpx; */
+  background-color: white;
+}
+.outbody{
+  padding: 50rpx 20rpx;
+  font-size: 40rpx;
+  text-align: center;
+}
+.outcontrol{
+  display: flex;
+}
+.outcontrol view{
+  flex: 1;
+  padding: 30rpx 0rpx;
+  text-align: center;
+}
+.outcontrol view:first-of-type{
+  background-color: rgb(255, 251, 240)
+}
+.outcontrol view:last-of-type{
+  background-color: rgb(255, 209, 69);
+}
+.yourturntips{
+  font-size: 50rpx;
+  margin-bottom: 20rpx;
+}
+.turntime{
+  font-size: 40rpx;
+  text-align: center;
+}

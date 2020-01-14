@@ -99,7 +99,9 @@
 
   </scroll-view>
   <view class="ready-control">
-    <view class="start-btn" bindtap="readytogame">开始游戏</view>
+    <view class="start-btn" bindtap="readytogame" wx:if="{{isOwner}}">开始游戏</view>
+    <view class="start-btn" bindtap="readyfinish" wx:if="{{!isOwner&&isready}}">准备</view>
+    
     <view class="invite">+ 邀请</view>
   </view>
 
@@ -241,18 +243,7 @@
         </view>
       </view>
 
-      <view class="others-talk" id="last">
-        <!-- 头像相关信息 -->
-        <view class="other-photos">
-          <view class="photos">
-            <image src="../../image/log.png"></image>
-          </view>
-          <view>6号</view>
-        </view>
-        <view class="other-talks">
-          离散数学
-        </view>
-      </view>
+      
     </scroll-view>
   </view>
 
@@ -306,8 +297,19 @@
     <view>3号玩家出局,游戏继续</view>
   </view>
   <!-- 自己出局 -->
-  <view class="mine-out" wx:if="{{isOut}}">
-
+  <view class="mine-out" wx:if="{{isOut&&isOutWindow}}">
+    <view class="out-window">
+      <view class="outbody">您已出局</view>
+      <view class="outcontrol">
+        <view class="outcontinue" bindtap="continuegame">继续观战</view>
+        <view class="outleave" bindtap="backsure">离开房间</view>
+      </view>
+    </view>
+  </view>
+  <!-- 到你了 -->
+  <view class="yourturn out-tips" wx:if="{{sendMsg}}">
+    <view class="yourturntips">到你啦</view>
+    <view class="turntime">{{countTime}}</view>
   </view>
   <!-- 游戏结束 -->
   <view class="over-tips" wx:if="{{isOver}}">
@@ -383,7 +385,7 @@
   </view>
 
 
-
+  <!-- 发送消息 -->
   <view class="talk-control" wx:if="{{!isOut}}">
     <input class="input" placeholder="请输入内容,20字以内"></input>
     <text class="send-btn" wx:if="{{sendMsg}}" bindtap="sendMsg">发送</text>

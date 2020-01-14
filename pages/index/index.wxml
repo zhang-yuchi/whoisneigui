@@ -22,9 +22,23 @@
   <view class="wrap" style="display:{{wrapDisplay}}"></view>
   <scroll-view class="rank" style="display:{{rankDisplay}}" scroll-y='true'>
     <image src="../../image/close.png" class="closeImg" bindtap="closeRank"></image>
+
     <view class="rankItem">
       <image src="../../image/first.png" class="medalImg"></image>
-      <image class="rankImg" src="../../image/tiren.png"></image>
+      <image class="rankImg" src="https://wx.qlogo.cn/mmopen/vi_32/4FYsd8bWiaR8otxj1cNzib02NwV3iaqpk8Vb59uUG92oRFHbgNNFmB3g4TY0nAzZgPFdDtqTHElJicRDJO08S8Nib8Q/132"></image>
+      <view class="rank-name">nickName</view>
+      <view class="rank-score">1500</view>
+    </view>
+
+      <view class="rankItem">
+      <image src="../../image/first.png" class="medalImg"></image>
+      <image class="rankImg" src="https://wx.qlogo.cn/mmopen/vi_32/4FYsd8bWiaR8otxj1cNzib02NwV3iaqpk8Vb59uUG92oRFHbgNNFmB3g4TY0nAzZgPFdDtqTHElJicRDJO08S8Nib8Q/132"></image>
+      <view class="rank-name">nickName</view>
+      <view class="rank-score">1500</view>
+    </view>
+    <view class="rankItem">
+      <image src="../../image/first.png" class="medalImg"></image>
+      <image class="rankImg" src="https://wx.qlogo.cn/mmopen/vi_32/4FYsd8bWiaR8otxj1cNzib02NwV3iaqpk8Vb59uUG92oRFHbgNNFmB3g4TY0nAzZgPFdDtqTHElJicRDJO08S8Nib8Q/132"></image>
       <view class="rank-name">nickName</view>
       <view class="rank-score">1500</view>
     </view>

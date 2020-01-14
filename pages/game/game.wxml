@@ -101,6 +101,7 @@
   <view class="ready-control">
     <view class="start-btn" bindtap="readytogame">开始游戏</view>
     <view class="invite">+ 邀请</view>
+    <button class="invite inviteBtn" open-type="share">+ 邀请</button>
   </view>
 
 <!-- 退出 -->

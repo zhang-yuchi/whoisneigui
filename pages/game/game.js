@@ -50,7 +50,7 @@ Page({
     gameNo:null,
     personNum: 5,//最大人数
     roomName:'',
-    outWindow:true,//是否打开出局弹框(是否有别人出局)
+    outWindow:false,//是否打开出局弹框(是否有别人出局)
 
     sendMsg:true,//是否能发送数据(是否是自己的回合)
 
@@ -233,7 +233,7 @@ Page({
       //先开启连接
       room_thread = wx.connectSocket({
 
-        url: app.wsHost,
+        url: app.wsHost+userid,
 
         success(SocketTask) {
           // console.log(SocketTask)
@@ -286,7 +286,7 @@ Page({
             data:util.jsonToString({
               head:"IMplayer",
               msg:{
-                userId: 2,
+                userId: userid,
                 userName: "123",
                 hostId: 1
               }
@@ -323,11 +323,7 @@ Page({
             })
             console.log('房间人数：'+ arr.length)
           }
-          console.log(res.head)
-          console.log(res)
-          console.log(res.head=="playerSpeakOk")
-          console.log(res.head.length)
-          console.log("playerSpeakOk".length)
+          
           if (res.head == "playerSpeakOK") {//下一个发言者 null为一轮结束
             console.log("接收到了")
             if (!res.msg) {
@@ -360,11 +356,26 @@ Page({
             let content = msg.substring(flagIndex+1)
             console.log(num)
             console.log(content)
-
+            
+            let obj = {
+              gameNo:num,
+              content:content,
+              
+            }
+            that.data.msglist.push(obj)
+            for (let item of that.data.msglist){
+              
+            }
+            that.setData({
+              msglist: that.data.msglist
+            })
           }
           
           if (res.head =="GAMESTARTED"){//房主开始游戏
             console.log("游戏开始了")
+            that.setData({
+              isStart:true
+            })
             if(currentPlayer==res.msg){
               that.setData({
                 sendMsg:true,
@@ -372,16 +383,65 @@ Page({
             }
           }
           if(res.head=="playerList"){
-            
+            //开始游戏时的人数
+            console.log(res.msg)
+            that.setData({
+              gamelist:res.msg
+            })
+            console.log(that.data.gamelist)
           }
           if(res.head =="playerWordKey"){
-
+            //渲染每个词语,并且赋给用户
+            let arr = that.data.gamelist
+            let list = res.msg
+            let word = ""
+            for(let item of arr){
+              item.word = list[item.gameNo]
+            }
+            for(let item of arr){
+              if(that.data.gameNo==item.gameNo){
+                that.setData({
+                  word:item.word
+                })
+                break;
+              }
+            }
+            that.setData({
+              gamelist:arr
+            })
+            console.log(that.data)
           }
           if (res.head == "voteResult"){
             console.log("展示投票结果")
 
-          }if (res.head == "spyVotedOut"){
+          }
+          
+          if (res.head == "spyVotedOut"){
             console.log("间谍投出")
+          }
+
+          if (res.head == "gameResult"){
+            //游戏结束
+
+          }
+          if(res.head =="beforeVote"){
+            console.log("存活列表")
+            console.log(res.msg)
+            let userlist = that.data.gamelist;
+            let alive = res.msg
+            for(let item of userlist){
+              item.alive = false
+              for(let key of alive){
+                if(item.gameNo==key.gameNo){
+                  item.alive = true
+                  break
+                }
+              }
+            }
+            that.setData({
+              gamelist:userlist
+            })
+            console.log(that.data)
           }
 
         })

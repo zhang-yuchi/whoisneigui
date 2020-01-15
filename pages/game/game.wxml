@@ -114,7 +114,7 @@
 
   </view>
   <view class="talk-content">
-    <view class="word">二叉树</view>
+    <view class="word">{{word}}</view>
     <scroll-view style="height:100%" scroll-y="true" scroll-into-view="last">
 
       <block wx:for="{{msglist}}" wx:key="{{item.index}}">
@@ -157,40 +157,14 @@
       <view class="vote-tips">请选择你要投选的号码</view>
       <view class="vote-list">
 
-        <view class="vote-block">
+        <view class="vote-block" wx:if="{{item.alive}}" wx:for="{{gamelist}}" wx:key="{{index}}">
           <view class="vote-photos">
             <image src="../../image/log.png"></image>
           </view>
-          <text>1号</text>
+          <text>{{item.gameNo}}号</text>
         </view>
-        <view class="vote-block">
-          <view class="vote-photos">
-            <image src="../../image/log.png"></image>
-          </view>
-          <text>2号</text>
-        </view>
-        <view class="vote-block">
-          <view class="vote-photos">
-            <image src="../../image/log.png"></image>
-          </view>
-          <text>3号</text>
-        </view>
-        <view class="vote-block">
-          <view class="vote-photos">
-            <image src="../../image/log.png"></image>
-          </view>
-          <text>4号</text>
-        </view>
-        <view class="vote-block">
-          <view class="vote-photos">
-            <image src="../../image/log.png"></image>
-          </view>
-          <text>5号</text>
-        </view>
-        <!-- <view class="vote-block">
-        <image src="../../image/log.png"></image>
-        <text>1号</text>
-      </view> -->
+
+        
 
       </view>
       <view class="vote-btn" bindtap="sendVote">投票</view>

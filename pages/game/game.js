@@ -7,6 +7,7 @@ let roomkey = null
 var time = require('../../utils/time.js')
 var currentPlayer = 0;
 var gameNo = 0;
+var userid = 2;
 var turns = 1;
 var personNum = 10//最大人数
 var msglist = []
@@ -288,7 +289,7 @@ Page({
           })
         }
         room_thread.onMessage((data) => {
-          // console.log(data)
+          console.log(data)
           let res = util.stringToJson(data.data)
           console.log(res)
           if (res.head =="joinSuccess"){//私发
@@ -353,9 +354,19 @@ Page({
           
           if (res.head =="GAMESTARTED"){//房主开始游戏
             console.log("游戏开始了")
+            if(currentPlayer==res.msg){
+              that.setData({
+                sendMsg:true,
+              })
+            }
+          }
+          if(res.head=="playerList"){
             
+          }
+          if(res.head =="playerWordKey"){
 
-          }if (res.head == "voteResult"){
+          }
+          if (res.head == "voteResult"){
             console.log("展示投票结果")
 
           }if (res.head == "spyVotedOut"){

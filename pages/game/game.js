@@ -5,6 +5,7 @@ const util = require('../../utils/util.js')
 let room_thread = null
 let roomkey = null
 var time = require('../../utils/time.js')
+var personNum = 10//最大人数
 Page({
 
   /**
@@ -62,7 +63,7 @@ Page({
         head:"getReady",
         msg:{
           roomKey:roomkey,
-          playerNo:"2"
+          gameNo:"2"
         }
       })
     })
@@ -270,14 +271,15 @@ Page({
           })
         }
         room_thread.onMessage((data) => {
-          console.log(data)
+          // console.log(data)
           let res = util.stringToJson(data.data)
           console.log(res)
-          if (res.head =="roomBroadcast"){
-            
-            roomkey = res.msg[0].roomKey
+          if (res.head =="joinSuccess"){
+            // msgUtil.joinSuccess(res)
+            roomkey = msgUtil.joinSuccess(res)
+            console.log(roomkey)
           }
-          console.log(roomkey)
+
         })
         
       })

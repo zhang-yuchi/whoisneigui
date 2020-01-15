@@ -42,7 +42,7 @@
 
 
     <!-- 待邀请 -->
-    <view class="ready-user" wx:for='[{{personNum - (userNow.length)}}]' wx:key='noList'>
+    <view class="ready-user" wx:for='[{{inviteNum}}]' wx:key='noList'>
       <view class="ready-photos">
         <image src="../../image/invite.png"></image>
       </view>
@@ -151,10 +151,9 @@
   <!-- 有人出局 但不是自己 -->
   <view class="out-tips" wx:if="{{!isOut&&outWindow}}">
     <view class="score-list out-score-list">
-      <view class="score-result">3号投给1号</view>
-      <view class="score-result">5号弃票</view>
+      <view class="score-result" wx:for='{{voteList}}' wx:key='voteList'>{{item.from}}号投给{{item.to}}号</view>
     </view>
-    <view style="text-align:center">3号玩家出局</view>
+    <view style="text-align:center">{{voteNo}}号玩家出局——{{voteNum}}票</view>
     <view style="text-align:center">游戏继续</view>
   </view>
   <!-- 自己出局 -->
@@ -243,7 +242,7 @@
       </view>
 
       <view class="over-control">
-        <view class="back">返回房间</view>
+        <!-- <view class="back">返回房间</view> -->
         <view class="toindex">返回主页</view>
       </view>
     </view>

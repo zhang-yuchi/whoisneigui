@@ -43,7 +43,11 @@ Page({
     isOver:false,//游戏是否结束
     userlist:[],//所有用户列表
 
-    outWindow:false,//是否打开出局弹框(是否有别人出局)
+    userNow:[],
+    personNum: 10,//最大人数
+    roomName:wx.getStorageSync('userInfo').nickName,
+    outWindow:true,//是否打开出局弹框(是否有别人出局)
+
     sendMsg:true,//是否能发送数据(自己的回合)
 
     spyVictory:false,//卧底获胜
@@ -78,6 +82,7 @@ Page({
   },
   //准备
   readyfinish(){
+    
     room_thread.send({
       data:util.jsonToString({
         head:"getReady",
@@ -128,6 +133,8 @@ Page({
   },
   readytogame(){
     let that = this
+    
+
     room_thread.send({
       data: util.jsonToString({
         head:"startGame",
@@ -140,13 +147,7 @@ Page({
       isStart:true
     })
 
-    //----------------时间计时
-    console.log('开始计时')
-    time.countTime(that, 15, function(that){
-      that.setData({
-        countTime:15
-      })
-    })
+    
 
 
 
@@ -253,6 +254,9 @@ Page({
                 wx.showToast({
                   title: '创建房间成功',
                 })
+                that.setData({
+                  roomName: options.roomName
+                })
               },
               fail(){
                 wx.showToast({
@@ -263,14 +267,14 @@ Page({
             })})
         }else{
           //其他人加入房间
-          console.log(util.jsonToString({
-            head: "IMplayer",
-            msg: {
-              userId: 2,
-              userName: "123",
-              hostId: 1
-            }
-          }))
+          // console.log(util.jsonToString({
+          //   head: "IMplayer",
+          //   msg: {
+          //     userId: 2,
+          //     userName: "123",
+          //     hostId: 1
+          //   }
+          // }))
           room_thread.send({
             data:util.jsonToString({
               head:"IMplayer",
@@ -297,6 +301,14 @@ Page({
           }
           if(res.head=="playerJoinOk"){//有人加入
             msgUtil.readyOk(that.res)
+            let arr =[]
+            for(let item of res.msg){
+              arr.push(item)
+            }
+            that.setData({
+              userNow:arr
+            })
+            console.log('房间人数：'+ arr.length)
           }
           console.log(res.head)
           console.log(res)
@@ -355,7 +367,7 @@ Page({
       
     }else{
       wx.redirectTo({
-        url: '../login/login?roomid=1', //-----------------roomid
+        url: '../login/login?roomid='+roomkey,
       })
     }
 
@@ -409,7 +421,7 @@ Page({
   onShareAppMessage: function (res) {
     return {
       title: '谁是卧底，快来玩呀',
-      path: '/pages/game/game?roomid=1'//------------------roomkey-----------------------------
+      path: '/pages/game/game?roomid='+roomkey
     }
   }
 })

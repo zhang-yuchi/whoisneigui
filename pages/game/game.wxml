@@ -3,99 +3,38 @@
 <view class="ready" wx:if="{{!isStart}}">
   <view class="ready-nav">
     <image src="../../image/left.png" bindtap="back"></image>
-    <text>ved的房间</text>
+    <text>{{roomName}}的房间</text>
   </view>
   <scroll-view class="ready-user-list" scroll-y="true">
 
-    <view class="ready-user">
-      <view class="ready-photos">
+    <view class="ready-user" wx:for='{{arr}}' wx:key='list'>
+      <view class="ready-photos {{isready?ready-photos:ready-person}}">
         <image src="../../image/log.png"></image>
+        <image class="isready" src="../../image/ready.png" wx:if='{{isready}}'></image>
       </view>
       <view class="ready-info">
         <view class="ready-user-name">
-          <text>ved</text>
-          <image src="../../image/owner.png" class="owner"></image>
+          <text>{{item.userName}}</text>
+          <image src="../../image/owner.png" class="owner" wx:if='{{isowner}}'></image>
+
         </view>
         <view class="score">积分:100分</view>
       </view>
-    </view>
-    <view class="ready-user">
-      <view class="ready-photos ready-person">
-        <image src="../../image/log.png"></image>
-        <image class="isready" src="../../image/ready.png"></image>
-      </view>
-      <view class="ready-info">
-        <view class="ready-user-name">ved</view>
-        <view class="score">积分:100分</view>
-      </view>
       <view class="outman">
-        <image src="../../image/tiren.png"></image>
-      </view>
-    </view>
-    <view class="ready-user">
-      <view class="ready-photos">
-        <image src="../../image/log.png"></image>
-      </view>
-      <view class="ready-info">
-        <view class="ready-user-name">ved</view>
-        <view class="score">积分:100分</view>
-      </view>
-      <view class="outman">
-        <image src="../../image/tiren.png"></image>
-      </view>
-    </view>
-    <view class="ready-user">
-      <view class="ready-photos">
-        <image src="../../image/log.png"></image>
-      </view>
-      <view class="ready-info">
-        <view class="ready-user-name">ved</view>
-        <view class="score">积分:100分</view>
-      </view>
-      <view class="outman">
-        <image src="../../image/tiren.png"></image>
-      </view>
-    </view>
-    <view class="ready-user">
-      <view class="ready-photos">
-        <image src="../../image/log.png"></image>
-      </view>
-      <view class="ready-info">
-        <view class="ready-user-name">ved</view>
-        <view class="score">积分:100分</view>
-      </view>
-      <view class="outman">
-        <image src="../../image/tiren.png"></image>
-      </view>
-    </view>
-    <!-- 待邀请 -->
-    <view class="ready-user">
-      <view class="ready-photos">
-        <image src="../../image/invite.png"></image>
-      </view>
-      <view class="ready-info">
-        <view class="ready-user-name-invite">待邀请</view>
-      </view>
-    </view>
-    <!-- 待邀请 -->
-    <view class="ready-user">
-      <view class="ready-photos">
-        <image src="../../image/invite.png"></image>
-      </view>
-      <view class="ready-info">
-        <view class="ready-user-name-invite">待邀请</view>
-      </view>
-    </view>
-    <!-- 待邀请 -->
-    <view class="ready-user">
-      <view class="ready-photos">
-        <image src="../../image/invite.png"></image>
-      </view>
-      <view class="ready-info">
-        <view class="ready-user-name-invite">待邀请</view>
+        <image src="../../image/tiren.png" hidden="{{isowner}}"></image>
       </view>
     </view>
 
+
+    <!-- 待邀请 -->
+    <view class="ready-user" wx:for='[{{personNum-userNow.length}}]'>
+      <view class="ready-photos">
+        <image src="../../image/invite.png"></image>
+      </view>
+      <view class="ready-info">
+        <view class="ready-user-name-invite">待邀请</view>
+      </view>
+    </view>
 
   </scroll-view>
   <view class="ready-control">
@@ -208,7 +147,9 @@
           </view>
         </block>
 
+
       </block>
+
     </scroll-view>
   </view>
 
@@ -263,7 +204,8 @@
       <view class="score-result">3号投给1号</view>
       <view class="score-result">5号弃票</view>
     </view>
-    <view>3号玩家出局,游戏继续</view>
+    <view style="text-align:center">3号玩家出局</view>
+    <view style="text-align:center">游戏继续</view>
   </view>
   <!-- 自己出局 -->
   <view class="mine-out" wx:if="{{isOut&&isOutWindow}}">

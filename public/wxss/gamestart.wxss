@@ -65,9 +65,20 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  position: relative;
 }
-.userinfo::after{
-  border: 2px 2px 2px transparent solid black;
+.userinfo::before{
+  content: '';
+  width: 0;
+  height: 0;
+  border-bottom: 40rpx solid rgb(38, 179, 38);
+  border-left: 40rpx solid transparent;
+  border-right: 40rox solid transparent;
+  position: absolute;
+  top: -30rpx;
+  left: 20rpx;
+  transform: rotate(45deg);
+  z-index: 98;
 }
 
 

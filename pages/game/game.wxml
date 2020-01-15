@@ -7,16 +7,31 @@
   </view>
   <scroll-view class="ready-user-list" scroll-y="true">
 
-    <view class="ready-user" wx:for='{{arr}}' wx:key='list'>
-      <view class="ready-photos {{isready?ready-photos:ready-person}}">
+    <view class="ready-user">
+      <view class="ready-photos">
         <image src="../../image/log.png"></image>
-        <image class="isready" src="../../image/ready.png" wx:if='{{isready}}'></image>
+      </view>
+      <view class="ready-info">
+        <view class="ready-user-name">
+          <text>{{userNow[0].userName}}</text>
+          <image src="../../image/owner.png" class="owner"></image>
+
+        </view>
+        <view class="score">积分:100分</view>
+      </view>
+      <view class="outman">
+        <!-- <image src="../../image/tiren.png" hidden="{{isowner}}"></image> -->
+      </view>
+    </view>
+
+    <view class="ready-user" wx:for='{{userNow}}' wx:key='list' wx:if='{{index != 0}}'>
+      <view class="ready-photos {{item.isReady? 'ready-person':'a'}}">
+        <image src="../../image/log.png"></image>
+        <image class="isready" src="../../image/ready.png" wx:if='{{item.isReady}}'></image>
       </view>
       <view class="ready-info">
         <view class="ready-user-name">
           <text>{{item.userName}}</text>
-          <image src="../../image/owner.png" class="owner" wx:if='{{isowner}}'></image>
-
         </view>
         <view class="score">积分:100分</view>
       </view>

@@ -4,6 +4,7 @@ const util = require('../../utils/util.js')
 let room_thread = null
 let roomkey = null
 var time = require('../../utils/time.js')
+var playNo = 0
 Page({
 
   /**
@@ -20,7 +21,7 @@ Page({
     isOut:false,//自己是否出局?
     isOver:false,//游戏是否结束
     userlist:[],//所有用户列表
-
+    userNow:[],
     outWindow:true,//是否打开出局弹框(是否有别人出局)
     sendMsg:false,//是否能发送数据(自己的回合)
 
@@ -61,7 +62,7 @@ Page({
         head:"getReady",
         msg:{
           roomKey:roomkey,
-          playerNo:"2"
+          playerNo:playerNo
         }
       })
     })
@@ -118,13 +119,7 @@ Page({
       isStart:true
     })
 
-    //----------------时间计时
-    console.log('开始计时')
-    time.countTime(that, 15, function(that){
-      that.setData({
-        countTime:15
-      })
-    })
+    
 
 
 

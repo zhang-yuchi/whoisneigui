@@ -280,7 +280,7 @@ Page({
       
     }else{
       wx.redirectTo({
-        url: '../login/login?roomid=1', //-----------------roomid
+        url: '../login/login?roomid='+roomkey,
       })
     }
 
@@ -334,7 +334,7 @@ Page({
   onShareAppMessage: function (res) {
     return {
       title: '谁是卧底，快来玩呀',
-      path: '/pages/game/game?roomid=1'//------------------roomkey-----------------------------
+      path: '/pages/game/game?roomid='+roomkey
     }
   }
 })

@@ -295,11 +295,19 @@
   </view>
   <!-- 有人出局 但不是自己 -->
   <view class="out-tips" wx:if="{{!isOut&&outWindow}}">
+    <view class="score-list out-score-list">
+          <view class="score-result">3号投给1号</view>
+          <view class="score-result">5号弃票</view>
+    </view>
     <view>3号玩家出局,游戏继续</view>
   </view>
   <!-- 自己出局 -->
   <view class="mine-out" wx:if="{{isOut&&isOutWindow}}">
     <view class="out-window">
+      <view class="score-list">
+        <view class="score-result">3号投给1号</view>
+        <view class="score-result">5号弃票</view>
+      </view>
       <view class="outbody">您已出局</view>
       <view class="outcontrol">
         <view class="outcontinue" bindtap="continuegame">继续观战</view>

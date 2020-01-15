@@ -13,7 +13,14 @@ const formatNumber = n => {
   n = n.toString()
   return n[1] ? n : '0' + n
 }
-
+function jsonToString(obj){
+  return JSON.stringify(obj)
+}
+function stringToJson(str){
+  return JSON.parse(str)
+}
 module.exports = {
-  formatTime: formatTime
+  formatTime: formatTime,
+  jsonToString: jsonToString,
+  stringToJson:stringToJson
 }

@@ -1,5 +1,6 @@
 // pages/game/game.js
 const app = getApp()
+const util = require('../../utils/util.js')
 let room_thread = null
 Page({
 
@@ -9,7 +10,7 @@ Page({
   data: {
 
     isowner:true,//是不是房主
-    isready:false,
+    isready:false,//用户准备
     word:"二叉树",//自己拿到的词语
     isStart:false,//判断游戏是否开始
     voteList:[],//投票列表
@@ -17,7 +18,7 @@ Page({
     isOut:false,//自己是否出局?
     isOver:false,//游戏是否结束
     userlist:[],//所有用户列表
-    outWindow:false,//是否打开出局弹框(是否有别人出局)
+    outWindow:true,//是否打开出局弹框(是否有别人出局)
     sendMsg:false,//是否能发送数据(自己的回合)
     spyVictory:false,//卧底获胜
     otherVictory:true,//平民获胜
@@ -38,7 +39,12 @@ Page({
       title: '退出',
       content: '您要中途退出吗?',
       success(){
-        console.log(111)
+        wx.redirectTo({
+          url: '../index/index',
+          success: function(res) {},
+          fail: function(res) {},
+          complete: function(res) {},
+        })
       },
     })
   },
@@ -123,15 +129,67 @@ Page({
       })
       //先开启连接
       room_thread = wx.connectSocket({
-        url: 'ws://10.4.223.246:8082/game/1',
+        url: 'ws://10.4.223.246:8082/game/2',
         success(SocketTask) {
           // console.log(SocketTask)
           console.log("连接成功")
         }
       })
-      room_thread.onMessage((data) => {
-        console.log(data)
+      console.log(options.roomNum)
+      room_thread.onOpen(function(){
+        if (!options.roomNum) {
+          //建立房间
+          console.log(111)
+          room_thread.send({
+            data: JSON.stringify({
+              head: "IMhost",
+              msg: {
+                userId: 1,
+                maxPlayer: parseInt(options.roomNum),
+                roomName: options.roomName,
+                userName: wx.getStorageSync("userInfo").nickName
+              },
+              success(){
+                wx.showToast({
+                  title: '创建房间成功',
+                })
+              },
+              fail(){
+                wx.showToast({
+                  title: '创建房间失败!',
+                  icon:"none",
+                })
+              }
+            })})
+        }else{
+          //其他人加入房间
+          console.log(util.jsonToString({
+            head: "IMplayer",
+            msg: {
+              userId: 2,
+              userName: "123",
+              hostId: 1
+            }
+          }))
+          room_thread.send({
+            data:util.jsonToString({
+              head:"IMplayer",
+              msg:{
+                userId: 2,
+                userName: "123",
+                hostId: 1
+              }
+            })
+          })
+        }
+        room_thread.onMessage((data) => {
+          console.log(data)
+          util.stringToJson(data)
+
+        })
       })
+      
+      
     }else{
       wx.showToast({
         title: '没有授权',

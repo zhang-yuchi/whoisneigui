@@ -235,6 +235,9 @@ Page({
         }
       })
     })
+    this.setData({
+      isVote:false
+    })
   },
   /**
    * 生命周期函数--监听页面加载
@@ -449,13 +452,25 @@ Page({
             console.log("展示投票结果")
 
           }
-          
+          if (res.head == 'voteSet') {
+            
+            
+
+          }
+          if (res.head == 'AfterVote'){//投票后存活列表
+            
+          }
           if (res.head == "spyVotedOut"){
             console.log("间谍投出")
           }
 
           if (res.head == "gameResult"){
-            //游戏结束
+            //游戏结束---分为间谍和平民
+            
+
+          }
+          if(res.head == 'civilianVoteOUT'){
+            //卧底赢
 
           }
           if(res.head =="beforeVote"){

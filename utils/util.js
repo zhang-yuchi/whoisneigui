@@ -19,11 +19,16 @@ function jsonToString(obj){
 function stringToJson(str){
   return JSON.parse(str)
 }
-function getArr(that,arr){
-  
+function getArr(arr){
+  let voteList = []
+  for (let item of arr) {
+    voteList.push({ from: item.split('|')[0], to: item.split('|')[1] })
+  }
+  return voteList
 }
 module.exports = {
   formatTime: formatTime,
   jsonToString: jsonToString,
-  stringToJson:stringToJson
+  stringToJson:stringToJson,
+  getArr:getArr
 }

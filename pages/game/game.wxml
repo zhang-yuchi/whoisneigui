@@ -299,7 +299,8 @@
           <view class="score-result">3号投给1号</view>
           <view class="score-result">5号弃票</view>
     </view>
-    <view>3号玩家出局,游戏继续</view>
+    <view style="text-align:center">3号玩家出局</view>
+    <view style="text-align:center">游戏继续</view>
   </view>
   <!-- 自己出局 -->
   <view class="mine-out" wx:if="{{isOut&&isOutWindow}}">

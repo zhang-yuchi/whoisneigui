@@ -13,7 +13,7 @@ Page({
    */
   data: {
 
-    isowner:false,//是不是房主
+    isowner:true,//是不是房主
     isready:false,//用户准备
     word:"二叉树",//自己拿到的词语
     isStart:false,//判断游戏是否开始
@@ -108,6 +108,8 @@ Page({
   },
   readytogame(){
     let that = this
+    
+
     room_thread.send({
       data: util.jsonToString({
         head:"startGame",
@@ -267,7 +269,6 @@ Page({
         room_thread.onMessage((data) => {
           // console.log(data)
           let res = util.stringToJson(data.data)
-          console.log(res)
           if (res.head =="joinSuccess"){
             // msgUtil.joinSuccess(res)
             roomkey = msgUtil.joinSuccess(res)

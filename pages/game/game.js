@@ -272,6 +272,10 @@ Page({
             // msgUtil.joinSuccess(res)
             roomkey = msgUtil.joinSuccess(res)
             console.log(roomkey)
+          }else if(res.head =="readyOk"){
+            msgUtil.readyOk(that,res)
+          }else if(res.head=="playerJoinOk"){
+            msgUtil.readyOk(that.res)
           }
 
         })

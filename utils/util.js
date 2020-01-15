@@ -22,7 +22,7 @@ function stringToJson(str){
 function getArr(arr){
   let voteList = []
   for (let item of arr) {
-    voteList.push({ from: item.split('|')[0], to: item.split('|')[1] })
+    voteList.push({ 'from': item.split('|')[0], 'to': item.split('|')[1] })
   }
   return voteList
 }

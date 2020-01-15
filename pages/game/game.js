@@ -9,7 +9,7 @@ var currentPlayer = 0;
 
 var gameNo = 0;
 
-var userid = 3;//记得改
+var userid = 2;//记得改
 
 
 var turns = 1;
@@ -56,7 +56,8 @@ Page({
     interval:null,//计时器
     describe:'',//要发送的描述
     voteNo:'',
-    voteNum:''
+    voteNum:'',
+    voteList:[],//投票情况
   },
   back(){
     this.setData({
@@ -307,10 +308,9 @@ Page({
           let res = util.stringToJson(data.data)
           console.log(res)
           if (res.head =="joinSuccess"){//私发
-            // msgUtil.joinSuccess(res)
             roomkey = msgUtil.joinSuccess(res)
-            // console.log(roomkey)
             console.log(res)
+            
             that.setData({
               userId:res.msg.userId,
               gameNo:res.msg.gameNo
@@ -318,8 +318,6 @@ Page({
             gameNo = res.msg.gameNo
           }
           if(res.head =="readyOK"){//玩家准备ok
-            console.log(111)
-            // msgUtil.readyOk(that,res)
             let arr = []
             for (let item of res.msg) {
               arr.push(item)
@@ -335,6 +333,10 @@ Page({
             let arr =[]
             for(let item of res.msg){
               arr.push(item)
+            }
+            inviteNum--;
+            if (inviteNum < 0) {
+              inviteNum = 0
             }
             that.setData({
               userNow:arr
@@ -461,8 +463,10 @@ Page({
             
           }
           if (res.head == 'voteSet') {
-            let voteObj = util.getArr(res.msg)
-            
+            let voteList = util.getArr(res.msg)
+            that.setData({
+              voteList: voteList
+            })
 
           }
           if (res.head == 'AfterVote'){//投票后存活列表

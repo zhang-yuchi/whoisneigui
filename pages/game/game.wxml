@@ -81,50 +81,13 @@
   <view class="user-list">
     <image class="leave" bindtap="leaveroom" src="../../image/left.png"></image>
     <scroll-view class="users" scroll-x="true">
-      <view class="userinfo">
-        <view class="uphoto out">
-          <image src="../../image/log.png"></image>
-        </view>
-        <text class="name">ved</text>
-      </view>
-      <view class="userinfo">
-        <view class="uphoto">
-          <image src="../../image/log.png"></image>
-        </view>
-        <text class="name">ved</text>
-      </view>
-      <view class="userinfo">
-        <view class="uphoto">
-          <image src="../../image/log.png"></image>
-        </view>
-        <text class="name">ved</text>
-      </view>
-      <view class="userinfo">
-        <view class="uphoto">
-          <image src="../../image/log.png"></image>
-        </view>
-        <text class="name">vedasdfasdf</text>
-      </view>
-      <view class="userinfo">
-        <view class="uphoto">
-          <image src="../../image/log.png"></image>
-        </view>
-        <text class="name">ved</text>
-      </view>
-      <view class="userinfo">
-        <view class="uphoto">
-          <image src="../../image/log.png"></image>
-        </view>
-        <text class="name">ved</text>
-      </view>
-      <view class="userinfo">
-        <view class="uphoto">
-          <image src="../../image/log.png"></image>
-        </view>
-        <text class="name">ved</text>
-      </view>
 
-
+      <view class="userinfo" wx:for="{{gamelist}}" wx:key="{{item.index}}">
+        <view class="uphoto {{item.alive?'':'out'}}">
+          <image src="../../image/log.png"></image>
+        </view>
+        <text class="name">{{item.userName}}</text>
+      </view>
     </scroll-view>
 
   </view>

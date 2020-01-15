@@ -117,72 +117,36 @@
     <view class="word">二叉树</view>
     <scroll-view style="height:100%" scroll-y="true" scroll-into-view="last">
 
-      <view class="tips">第一轮</view>
-      <view class="others-talk">
-        <!-- 头像相关信息 -->
-        <view class="other-photos">
-          <view class="photos">
-            <image src="../../image/log.png"></image>
+      <block wx:for="{{msglist}}" wx:key="{{item.index}}">
+        <view class="tips" wx:if="{{item.isTips}}">{{item.content}}</view>
+        <block  wx:if="{{!item.isTips}}">
+          <view class="others-talk" wx:if="{{item.gameNo!=gameNo}}">
+            <!-- 头像相关信息 -->
+            <view class="other-photos">
+              <view class="photos">
+                <image src="../../image/log.png"></image>
+              </view>
+              <view>{{item.gameNo}}号</view>
+            </view>
+            <view class="other-talks">
+              {{item.content}}
+            </view>
           </view>
-          <view>1号</view>
-        </view>
-        <view class="other-talks">
-          离散数学
-        </view>
-      </view>
 
-      <view class="mine-talk">
-        <!-- 头像相关信息 -->
-        <view class="mine-photos">
-          <view class="photos">
-            <image src="../../image/log.png"></image>
+          <view class="mine-talk" wx:if="{{item.gameNo==gameNo}}">
+            <!-- 头像相关信息 -->
+            <view class="mine-photos">
+              <view class="photos">
+                <image src="../../image/log.png"></image>
+              </view>
+              <view>{{item.gameNo}}号</view>
+            </view>
+            <view class="mine-talks">
+              {{item.content}}
+            </view>
           </view>
-          <view>2号</view>
-        </view>
-        <view class="mine-talks">
-          离散数学
-        </view>
-      </view>
-
-      <view class="others-talk">
-        <!-- 头像相关信息 -->
-        <view class="other-photos">
-          <view class="photos">
-            <image src="../../image/log.png"></image>
-          </view>
-          <view>3号</view>
-        </view>
-        <view class="other-talks">
-          离散数学
-        </view>
-      </view>
-
-      <view class="others-talk">
-        <!-- 头像相关信息 -->
-        <view class="other-photos">
-          <view class="photos">
-            <image src="../../image/log.png"></image>
-          </view>
-          <view>4号</view>
-        </view>
-        <view class="other-talks">
-          离散数学
-        </view>
-      </view>
-
-      <view class="others-talk">
-        <!-- 头像相关信息 -->
-        <view class="other-photos">
-          <view class="photos">
-            <image src="../../image/log.png"></image>
-          </view>
-          <view>5号</view>
-        </view>
-        <view class="other-talks">
-          离散数学
-        </view>
-      </view>
-
+        </block>
+      </block>
 
     </scroll-view>
   </view>

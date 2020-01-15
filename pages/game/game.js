@@ -6,17 +6,34 @@ let room_thread = null
 let roomkey = null
 var time = require('../../utils/time.js')
 var currentPlayer = 0;
-var gameNo = 0
+var gameNo = 0;
+var turns = 1;
 var personNum = 5//最大人数
 var msglist = []
+var alivelist = []
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
-    isowner:true,//是不是房主
+    msglist:[
+      {
+        content:"第一轮",
+        isTips:true,
+      },
+      {gameNo:0,
+       content:"hhaha",
+       isTips:false,
+      },
+      {
+        gameNo: 1,
+        content: "hhah???a",
+        isTips: false,
+      },
+    ],//信息列表
+    alivelist:[],//存活列表
+    isowner:false,//是不是房主
     isready:false,//用户准备
     word:"二叉树",//自己拿到的词语
     isStart:false,//判断游戏是否开始
@@ -24,16 +41,21 @@ Page({
     isVote:false,//是否投票
     isOut:false,//自己是否出局?
     isOver:false,//游戏是否结束
-    userlist:[],//所有用户列表
+    userlist:[],//所有用户列表()
+
+    gamelist:[],//(进入的游戏人数列表)
     userNow:[],
+    userId:null,
+    gameNo:null,
     personNum: 5,//最大人数
     roomName:'',
     outWindow:true,//是否打开出局弹框(是否有别人出局)
-    sendMsg:true,//是否能发送数据(自己的回合)
+
+    sendMsg:true,//是否能发送数据(是否是自己的回合)
 
     spyVictory:false,//卧底获胜
     otherVictory:true,//平民获胜
-
+    gameNo:0,//自己的游戏编号
     countTime:0,//倒计时时间
     back:false,//是否开启返回弹窗
     isOutWindow:true,//是否关闭结束页面的弹窗 默认开启
@@ -210,7 +232,7 @@ Page({
       //先开启连接
       room_thread = wx.connectSocket({
 
-        url: 'ws://10.4.223.246:8082/game/1',
+        url: app.wsHost,
 
         success(SocketTask) {
           // console.log(SocketTask)
@@ -278,6 +300,11 @@ Page({
             // msgUtil.joinSuccess(res)
             roomkey = msgUtil.joinSuccess(res)
             // console.log(roomkey)
+            console.log(res)
+            that.setData({
+              userId:res.msg.userId,
+              gameNo:res.msg.gameNo
+            })
           }
           if(res.head =="readyOk"){//玩家准备ok
             console.log(111)
@@ -285,6 +312,7 @@ Page({
           }
           if(res.head=="playerJoinOk"){//有人加入
             msgUtil.readyOk(that.res)
+            console.log(res)
             let arr =[]
             for(let item of res.msg){
               arr.push(item)
@@ -335,11 +363,14 @@ Page({
           }
           
           if (res.head =="GAMESTARTED"){//房主开始游戏
+            console.log("游戏开始了")
             
+
           }if (res.head == "voteResult"){
+            console.log("展示投票结果")
 
           }if (res.head == "spyVotedOut"){
-
+            console.log("间谍投出")
           }
 
         })

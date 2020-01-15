@@ -8,7 +8,7 @@ var time = require('../../utils/time.js')
 var currentPlayer = 0;
 
 var gameNo = 0;
-var userid = 2;
+var userid = 2;//记得改
 
 var turns = 1;
 var personNum = 5//最大人数

@@ -66,6 +66,11 @@
   justify-content: center;
   align-items: center;
 }
+.userinfo::after{
+  border: 2px 2px 2px transparent solid black;
+}
+
+
 .users{
   white-space: nowrap;
   width: 600rpx;

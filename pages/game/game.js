@@ -1,5 +1,6 @@
 // pages/game/game.js
 const app = getApp()
+const msgUtil = require('../../utils/message.js')
 const util = require('../../utils/util.js')
 let room_thread = null
 let roomkey = null
@@ -268,6 +269,7 @@ Page({
           let res = util.stringToJson(data.data)
           console.log(res)
           if (res.head =="roomBroadcast"){
+            
             roomkey = res.msg[0].roomKey
           }
           console.log(roomkey)

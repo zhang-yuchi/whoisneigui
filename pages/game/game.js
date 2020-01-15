@@ -6,12 +6,16 @@ let room_thread = null
 let roomkey = null
 var time = require('../../utils/time.js')
 var currentPlayer = 0;
+
 var gameNo = 0;
 var userid = 2;
+
 var turns = 1;
 var personNum = 5//最大人数
+var inviteNum = 4
 var msglist = []
 var alivelist = []
+var hostId = 1
 Page({
 
   /**
@@ -92,7 +96,7 @@ Page({
         head:"getReady",
         msg:{
           roomKey:roomkey,
-          gameNo:"2"
+          gameNo:gameNo
         }
       })
     })
@@ -102,8 +106,22 @@ Page({
   },
   //取消准备
   readycancel(){
+    room_thread.send({
+      data:util.jsonToString({
+        head:'readyCancel',
+        msg:{
+          roomKey:roomkey,
+          gameNo:gameNo
+        }
+      })
+    })
+    let arr = []
+    for (let item of res.msg) {
+      arr.push(item)
+    }
     this.setData({
       isready:false,
+      userNow: arr
     })
   },
   backcancel(){
@@ -286,9 +304,11 @@ Page({
             data:util.jsonToString({
               head:"IMplayer",
               msg:{
+
                 userId: userid,
                 userName: "123",
                 hostId: 1
+
               }
             })
           })
@@ -306,13 +326,22 @@ Page({
               userId:res.msg.userId,
               gameNo:res.msg.gameNo
             })
+            gameNo = res.msg.gameNo
           }
-          if(res.head =="readyOk"){//玩家准备ok
+          if(res.head =="readyOK"){//玩家准备ok
             console.log(111)
-            msgUtil.readyOk(that,res)
+            // msgUtil.readyOk(that,res)
+            let arr = []
+            for (let item of res.msg) {
+              arr.push(item)
+            }
+            that.setData({
+              userNow: arr
+            })
+            console.log(arr)
           }
-          if(res.head=="playerJoinOk"){//有人加入
-            msgUtil.readyOk(that.res)
+          if(res.head=="playerJoinOK"){//有人加入
+            // msgUtil.readyOk(that.res)
             console.log(res)
             let arr =[]
             for(let item of res.msg){
@@ -322,8 +351,9 @@ Page({
               userNow:arr
             })
             console.log('房间人数：'+ arr.length)
+            console.log(arr)
           }
-          
+
           if (res.head == "playerSpeakOK") {//下一个发言者 null为一轮结束
             console.log("接收到了")
             if (!res.msg) {

@@ -19,6 +19,9 @@ function jsonToString(obj){
 function stringToJson(str){
   return JSON.parse(str)
 }
+function getArr(that,arr){
+  
+}
 module.exports = {
   formatTime: formatTime,
   jsonToString: jsonToString,

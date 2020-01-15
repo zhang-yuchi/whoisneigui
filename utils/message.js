@@ -6,6 +6,7 @@ let msgUtil = {
   },
   readyOk(that, data) {
     console.log(data)
+    
   },
 
 }

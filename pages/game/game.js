@@ -5,7 +5,10 @@ const util = require('../../utils/util.js')
 let room_thread = null
 let roomkey = null
 var time = require('../../utils/time.js')
+var currentPlayer = 0;
+var gameNo = 0
 var personNum = 10//最大人数
+var msglist = []
 Page({
 
   /**
@@ -23,8 +26,10 @@ Page({
     isOver:false,//游戏是否结束
     userlist:[],//所有用户列表
     userNow:[],
+    personNum: 10,//最大人数
+    roomName:wx.getStorageSync('userInfo').nickName,
     outWindow:true,//是否打开出局弹框(是否有别人出局)
-    sendMsg:false,//是否能发送数据(自己的回合)
+    sendMsg:true,//是否能发送数据(自己的回合)
 
     spyVictory:false,//卧底获胜
     otherVictory:true,//平民获胜
@@ -58,6 +63,7 @@ Page({
   },
   //准备
   readyfinish(){
+    
     room_thread.send({
       data:util.jsonToString({
         head:"getReady",
@@ -182,14 +188,6 @@ Page({
       })
     }
     
-
-    // console.log(112)
-    // room_thread.send({
-    //   data:"11111",
-    //   success(){
-    //     console.log(1111)
-    //   }
-    // })
   },
   sendVote:function(){
     room_thread.send({
@@ -237,6 +235,9 @@ Page({
                 wx.showToast({
                   title: '创建房间成功',
                 })
+                that.setData({
+                  roomName: options.roomName
+                })
               },
               fail(){
                 wx.showToast({
@@ -247,14 +248,14 @@ Page({
             })})
         }else{
           //其他人加入房间
-          console.log(util.jsonToString({
-            head: "IMplayer",
-            msg: {
-              userId: 2,
-              userName: "123",
-              hostId: 1
-            }
-          }))
+          // console.log(util.jsonToString({
+          //   head: "IMplayer",
+          //   msg: {
+          //     userId: 2,
+          //     userName: "123",
+          //     hostId: 1
+          //   }
+          // }))
           room_thread.send({
             data:util.jsonToString({
               head:"IMplayer",
@@ -269,14 +270,73 @@ Page({
         room_thread.onMessage((data) => {
           // console.log(data)
           let res = util.stringToJson(data.data)
-          if (res.head =="joinSuccess"){
+          console.log(res)
+          if (res.head =="joinSuccess"){//私发
             // msgUtil.joinSuccess(res)
             roomkey = msgUtil.joinSuccess(res)
-            console.log(roomkey)
-          }else if(res.head =="readyOk"){
+            // console.log(roomkey)
+          }
+          if(res.head =="readyOk"){//玩家准备ok
+            console.log(111)
             msgUtil.readyOk(that,res)
-          }else if(res.head=="playerJoinOk"){
+          }
+          if(res.head=="playerJoinOk"){//有人加入
             msgUtil.readyOk(that.res)
+            let arr =[]
+            for(let item of res.msg){
+              arr.push(item)
+            }
+            that.setData({
+              userNow:arr
+            })
+            console.log('房间人数：'+ arr.length)
+          }
+          console.log(res.head)
+          console.log(res)
+          console.log(res.head=="playerSpeakOk")
+          console.log(res.head.length)
+          console.log("playerSpeakOk".length)
+          if (res.head == "playerSpeakOK") {//下一个发言者 null为一轮结束
+            console.log("接收到了")
+            if (!res.msg) {
+              //开始投票
+              console.log("开始投票")
+              that.setData({
+                isVote: true,
+              })
+            } else {
+              //该下一个人说了
+              currentPlayer = res.msg
+              if (currentPlayer == gameNo) {
+                //是自己
+                that.setData({
+                  sendMsg: true
+                })
+              }
+            }
+          }
+          if(res.head =="playerSpeak"){//发言
+            console.log("说话了")
+            // msglist.push()
+            // let msg = res.msg
+            let msg = "2说：1111111111111111111111111"
+            let numIndex = msg.indexOf("说")
+            let flagIndex = msg.indexOf("：")
+            console.log(numIndex)
+            console.log(flagIndex)
+            let num = msg.substring(0,numIndex)
+            let content = msg.substring(flagIndex+1)
+            console.log(num)
+            console.log(content)
+
+          }
+          
+          if (res.head =="GAMESTARTED"){//房主开始游戏
+            
+          }if (res.head == "voteResult"){
+
+          }if (res.head == "spyVotedOut"){
+
           }
 
         })

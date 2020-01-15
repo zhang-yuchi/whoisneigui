@@ -468,8 +468,21 @@ Page({
           if (res.head == 'AfterVote'){//投票后存活列表
             
           }
-          if (res.head == "spyVotedOut"){
+          if (res.head == "spyVotedOUT"){//平民获胜
             console.log("间谍投出")
+            that.setData({
+              isOver: true,
+              spyVictory:true,
+              otherVictory:false
+            })
+          }
+          if(res.head == "civilianVotedOUT"){
+            //间谍获胜
+            that.setData({
+              isOver:true,
+              spyVictory: true,
+              otherVictory: false
+            })
           }
 
           if (res.head == "gameResult"){

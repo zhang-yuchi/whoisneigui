@@ -243,7 +243,7 @@
       </view>
 
       <view class="over-control">
-        <view class="back">返回房间</view>
+        <view class="backTo">返回房间</view>
         <view class="toindex">返回主页</view>
       </view>
     </view>

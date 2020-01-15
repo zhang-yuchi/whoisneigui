@@ -6,16 +6,33 @@ let room_thread = null
 let roomkey = null
 var time = require('../../utils/time.js')
 var currentPlayer = 0;
-var gameNo = 0
+var gameNo = 0;
+var turns = 1;
 var personNum = 10//最大人数
 var msglist = []
+var alivelist = []
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    msglist:[
+      {
+        content:"第一轮",
+        isTips:true,
+      },
+      {gameNo:0,
+       content:"hhaha",
+       isTips:false,
+      },
+      {
+        gameNo: 1,
+        content: "hhah???a",
+        isTips: false,
+      },
+    ],//信息列表
+    alivelist:[],//存活列表
     isowner:true,//是不是房主
     isready:false,//用户准备
     word:"二叉树",//自己拿到的词语
@@ -26,12 +43,12 @@ Page({
     isOver:false,//游戏是否结束
     userlist:[],//所有用户列表
 
-    outWindow:true,//是否打开出局弹框(是否有别人出局)
+    outWindow:false,//是否打开出局弹框(是否有别人出局)
     sendMsg:true,//是否能发送数据(自己的回合)
 
     spyVictory:false,//卧底获胜
     otherVictory:true,//平民获胜
-
+    gameNo:0,//自己的游戏编号
     countTime:0,//倒计时时间
     back:false,//是否开启返回弹窗
     isOutWindow:true,//是否关闭结束页面的弹窗 默认开启
@@ -322,11 +339,13 @@ Page({
           }
           
           if (res.head =="GAMESTARTED"){//房主开始游戏
-            
+            console.log("游戏开始了")
+
           }if (res.head == "voteResult"){
+            console.log("展示投票结果")
 
           }if (res.head == "spyVotedOut"){
-
+            console.log("间谍投出")
           }
 
         })

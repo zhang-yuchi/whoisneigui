@@ -8,7 +8,7 @@ var time = require('../../utils/time.js')
 var currentPlayer = 0;
 
 var gameNo = 0;
-var userid = 2;
+var userid = 3;
 
 var turns = 1;
 var personNum = 5//最大人数
@@ -115,13 +115,8 @@ Page({
         }
       })
     })
-    let arr = []
-    for (let item of res.msg) {
-      arr.push(item)
-    }
     this.setData({
-      isready:false,
-      userNow: arr
+      isready:false
     })
   },
   backcancel(){
@@ -440,6 +435,15 @@ Page({
               gamelist:arr
             })
             console.log(that.data)
+          }
+          if(res.head == 'cancelReadyOK'){//取消准备
+            let arr = []
+            for (let item of res.msg) {
+              arr.push(item)
+            }
+            that.setData({
+              userNow: arr
+            })
           }
           if (res.head == "voteResult"){
             console.log("展示投票结果")

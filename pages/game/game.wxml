@@ -290,7 +290,7 @@
       </view> -->
 
       </view>
-      <view class="vote-btn">投票</view>
+      <view class="vote-btn" bindtap="sendVote">投票</view>
     </view>
   </view>
   <!-- 有人出局 但不是自己 -->

@@ -2,6 +2,7 @@
 const app = getApp()
 const util = require('../../utils/util.js')
 let room_thread = null
+let roomkey = null
 var time = require('../../utils/time.js')
 Page({
 
@@ -10,7 +11,7 @@ Page({
    */
   data: {
 
-    isowner:true,//是不是房主
+    isowner:false,//是不是房主
     isready:false,//用户准备
     word:"二叉树",//自己拿到的词语
     isStart:false,//判断游戏是否开始
@@ -55,6 +56,15 @@ Page({
   },
   //准备
   readyfinish(){
+    room_thread.send({
+      data:util.jsonToString({
+        head:"getReady",
+        msg:{
+          roomKey:roomkey,
+          playerNo:"2"
+        }
+      })
+    })
     this.setData({
       isready:true,
     })
@@ -96,6 +106,14 @@ Page({
   },
   readytogame(){
     let that = this
+    room_thread.send({
+      data: util.jsonToString({
+        head:"startGame",
+        msg:{
+          roomKey: roomkey
+        }
+      })
+    })
     this.setData({
       isStart:true
     })
@@ -136,10 +154,8 @@ Page({
     let describe = this.data.describe
     let flag = true
     for(let w of word){
-      console.log(w)
       let reg = new RegExp(w+'+','img')
       let result = reg.test(describe)
-      console.log(result)
       if (result){
         wx.showToast({
           title: '包含关键字，无法发送',
@@ -152,6 +168,16 @@ Page({
     if (describe != '' && flag){
       console.log('发送成功')
       clearInterval(this.data.interval)
+      room_thread.send({
+        data:util.jsonToString({
+          head:'speak',
+          msg:{
+            roomKey:roomkey,
+            gameNo:'2',
+            content:'1111111111111111111111111'
+          }
+        })
+      })
       this.setData({
         countTime: 15,
         sendMsg: false
@@ -167,6 +193,17 @@ Page({
     //   }
     // })
   },
+  sendVote:function(){
+    room_thread.send({
+      data:util.jsonToString({
+        head:'vote',
+        msg:{
+          voteMsg:'1|2',
+          roomKey:roomkey
+        }
+      })
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -177,7 +214,7 @@ Page({
       //先开启连接
       room_thread = wx.connectSocket({
 
-        url: 'ws://10.4.223.246:8082/game/10',
+        url: 'ws://10.4.223.246:8082/game/1',
 
         success(SocketTask) {
           // console.log(SocketTask)
@@ -233,9 +270,14 @@ Page({
         }
         room_thread.onMessage((data) => {
           console.log(data)
-          util.stringToJson(data)
-
+          let res = util.stringToJson(data.data)
+          console.log(res)
+          if (res.head =="roomBroadcast"){
+            roomkey = res.msg[0].roomKey
+          }
+          console.log(roomkey)
         })
+        
       })
       
       
@@ -295,7 +337,7 @@ Page({
   onShareAppMessage: function (res) {
     return {
       title: '谁是卧底，快来玩呀',
-      path: '/pages/game/game?roomid=1'
+      path: '/pages/game/game?roomid=1'//------------------roomkey-----------------------------
     }
   }
 })

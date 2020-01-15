@@ -3,7 +3,7 @@
 <view class="ready" wx:if="{{!isStart}}">
   <view class="ready-nav">
     <image src="../../image/left.png" bindtap="back"></image>
-    <text>{{roomName}}的房间</text>
+    <text>{{roomName}}</text>
   </view>
   <scroll-view class="ready-user-list" scroll-y="true">
 
@@ -27,7 +27,7 @@
 
 
     <!-- 待邀请 -->
-    <view class="ready-user" wx:for='[{{personNum-userNow.length}}]'>
+    <view class="ready-user" wx:for='[{{personNum - (userNow.length)}}]' wx:key='noList'>
       <view class="ready-photos">
         <image src="../../image/invite.png"></image>
       </view>

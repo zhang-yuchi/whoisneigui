@@ -7,7 +7,7 @@ let roomkey = null
 var time = require('../../utils/time.js')
 var currentPlayer = 0;
 var gameNo = 0
-var personNum = 10//最大人数
+var personNum = 5//最大人数
 var msglist = []
 Page({
 
@@ -26,8 +26,8 @@ Page({
     isOver:false,//游戏是否结束
     userlist:[],//所有用户列表
     userNow:[],
-    personNum: 10,//最大人数
-    roomName:wx.getStorageSync('userInfo').nickName,
+    personNum: 5,//最大人数
+    roomName:'',
     outWindow:true,//是否打开出局弹框(是否有别人出局)
     sendMsg:true,//是否能发送数据(自己的回合)
 
@@ -216,6 +216,9 @@ Page({
           // console.log(SocketTask)
           console.log("连接成功")
         }
+      })
+      that.setData({
+        roomName:options.roomName
       })
       console.log(options.roomNum)
       room_thread.onOpen(function(){

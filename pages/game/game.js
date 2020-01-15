@@ -9,7 +9,7 @@ var currentPlayer = 0;
 var gameNo = 0;
 var userid = 2;
 var turns = 1;
-var personNum = 10//最大人数
+var personNum = 5//最大人数
 var msglist = []
 var alivelist = []
 Page({
@@ -46,9 +46,11 @@ Page({
 
     gamelist:[],//(进入的游戏人数列表)
     userNow:[],
-    personNum: 10,//最大人数
-    roomName:wx.getStorageSync('userInfo').nickName,
-    outWindow:false,//是否打开出局弹框(是否有别人出局)
+    userId:null,
+    gameNo:null,
+    personNum: 5,//最大人数
+    roomName:'',
+    outWindow:true,//是否打开出局弹框(是否有别人出局)
 
     sendMsg:true,//是否能发送数据(是否是自己的回合)
 
@@ -238,6 +240,9 @@ Page({
           console.log("连接成功")
         }
       })
+      that.setData({
+        roomName:options.roomName
+      })
       console.log(options.roomNum)
       room_thread.onOpen(function(){
         if (!options.roomNum) {
@@ -296,6 +301,11 @@ Page({
             // msgUtil.joinSuccess(res)
             roomkey = msgUtil.joinSuccess(res)
             // console.log(roomkey)
+            console.log(res)
+            that.setData({
+              userId:res.msg.userId,
+              gameNo:res.msg.gameNo
+            })
           }
           if(res.head =="readyOk"){//玩家准备ok
             console.log(111)
@@ -303,6 +313,7 @@ Page({
           }
           if(res.head=="playerJoinOk"){//有人加入
             msgUtil.readyOk(that.res)
+            console.log(res)
             let arr =[]
             for(let item of res.msg){
               arr.push(item)

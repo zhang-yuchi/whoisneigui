@@ -8,7 +8,9 @@ var time = require('../../utils/time.js')
 var currentPlayer = 0;
 
 var gameNo = 0;
-var userid = 3;
+
+var userid = 2;//记得改
+
 
 var turns = 1;
 var personNum = 5//最大人数
@@ -22,25 +24,11 @@ Page({
    * 页面的初始数据
    */
   data: {
-    msglist:[
-      {
-        content:"第一轮",
-        isTips:true,
-      },
-      {gameNo:0,
-       content:"hhaha",
-       isTips:false,
-      },
-      {
-        gameNo: 1,
-        content: "hhah???a",
-        isTips: false,
-      },
-    ],//信息列表
+    msglist:[],//信息列表
     alivelist:[],//存活列表
     isowner:false,//是不是房主
     isready:false,//用户准备
-    word:"二叉树",//自己拿到的词语
+    word:"",//自己拿到的词语
     isStart:false,//判断游戏是否开始
     voteList:[],//投票列表
     isVote:false,//是否投票
@@ -190,6 +178,7 @@ Page({
   
 
   sendMsg(){
+    let that = this
     let word = this.data.word
     let describe = this.data.describe
     let flag = true
@@ -213,8 +202,8 @@ Page({
           head:'speak',
           msg:{
             roomKey:roomkey,
-            gameNo:'2',
-            content:'1111111111111111111111111'
+            gameNo:that.data.gameNo,
+            content:that.data.describe
           }
         })
       })
@@ -375,7 +364,7 @@ Page({
             console.log("说话了")
             // msglist.push()
             // let msg = res.msg
-            let msg = "2说：1111111111111111111111111"
+            let msg = res.msg
             let numIndex = msg.indexOf("说")
             let flagIndex = msg.indexOf("：")
             console.log(numIndex)
@@ -402,17 +391,30 @@ Page({
           if (res.head =="GAMESTARTED"){//房主开始游戏
             console.log("游戏开始了")
             that.setData({
+              msglist:[
+                {
+                  content: "第1轮",
+                  isTips: true,
+                },
+              ],
               isStart:true
             })
-            if(currentPlayer==res.msg){
+            currentPlayer = res.msg
+            console.log(that.data.gameNo)
+            console.log(currentPlayer)
+            if(that.data.gameNo==currentPlayer){
               that.setData({
                 sendMsg:true,
               })
             }
+            console.log(that.data.sendMsg)
           }
           if(res.head=="playerList"){
             //开始游戏时的人数
-            console.log(res.msg)
+            var arr = res.msg
+            for(let item of arr){
+              item.alive = true
+            }
             that.setData({
               gamelist:res.msg
             })

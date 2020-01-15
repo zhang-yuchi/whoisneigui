@@ -9,7 +9,7 @@ var currentPlayer = 0;
 
 var gameNo = 0;
 
-var userid = 2;//记得改
+var userid = 3;//记得改
 
 
 var turns = 1;
@@ -55,6 +55,8 @@ Page({
     hiddenvalue:1,//倒计时的透明度
     interval:null,//计时器
     describe:'',//要发送的描述
+    voteNo:'',
+    voteNum:''
   },
   back(){
     this.setData({
@@ -452,10 +454,14 @@ Page({
           }
           if (res.head == "voteResult"){
             console.log("展示投票结果")
-
+            that.setData({
+              votedNo: res.msg.split(':')[0],
+              voteNum: res.msg.split(':')[1]
+            })
+            
           }
           if (res.head == 'voteSet') {
-            
+            let voteObj = util.getArr(res.msg)
             
 
           }

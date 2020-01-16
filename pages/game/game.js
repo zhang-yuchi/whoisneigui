@@ -9,13 +9,13 @@ var currentPlayer = 0;
 
 var gameNo = 0;
 
-var userid = 3;//记得改
+var userid = 2;//记得改
 
 
 var turns = 1;
 var personNum = 5//最大人数
-var msglist = []
-var alivelist = []
+var msglist = []//消息数组
+var alivelist = []//存活数组
 var hostId = 1
 Page({
 
@@ -334,7 +334,7 @@ Page({
               arr.push(item)
             }
             that.setData({
-              inviteNum: inviteNum-1
+              inviteNum: that.data.inviteNum-1
             })
             if (that.data.inviteNum < 0) {
               that.setData({

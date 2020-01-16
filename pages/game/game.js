@@ -9,12 +9,11 @@ var currentPlayer = 0;
 
 var gameNo = 0;
 
-var userid = 2;//记得改
+var userid = 3;//记得改
 
 
 var turns = 1;
 var personNum = 5//最大人数
-var inviteNum = 4
 var msglist = []
 var alivelist = []
 var hostId = 1
@@ -57,7 +56,7 @@ Page({
     describe:'',//要发送的描述
     voteNo:'',
     voteNum:'',
-    voteList:[],//投票情况
+    inviteNum:4,//房间待邀请人数
   },
   back(){
     this.setData({
@@ -334,9 +333,13 @@ Page({
             for(let item of res.msg){
               arr.push(item)
             }
-            inviteNum--;
-            if (inviteNum < 0) {
-              inviteNum = 0
+            that.setData({
+              inviteNum: inviteNum-1
+            })
+            if (that.data.inviteNum < 0) {
+              that.setData({
+                inviteNum: 0
+              })
             }
             that.setData({
               userNow:arr

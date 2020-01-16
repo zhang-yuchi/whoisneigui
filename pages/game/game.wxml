@@ -42,7 +42,7 @@
 
 
     <!-- 待邀请 -->
-    <view class="ready-user" wx:for='[{{inviteNum}}]' wx:key='noList'>
+    <view class="ready-user" wx:for='{{inviteNum}}' wx:key='noList'>
       <view class="ready-photos">
         <image src="../../image/invite.png"></image>
       </view>
